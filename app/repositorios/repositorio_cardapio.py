@@ -109,4 +109,3 @@ def cadastrar_item():
             print("\n✅ Cardápio atualizado e salvo com sucesso!")
     except Exception as e:
         print(f'\n⚠️ Erro ao salvar o cardápio: {e}')    
-
