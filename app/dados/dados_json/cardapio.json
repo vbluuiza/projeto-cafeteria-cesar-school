@@ -1,0 +1,177 @@
+{
+    "bebidas": {
+        "cafes": [
+            {
+                "id": 1,
+                "nome": "Espresso",
+                "descricao": "Um café intenso e marcante, feito para quem aprecia o sabor autêntico e encorpado de um bom café.",
+                "ingredientes": ["Café especial moído fino", "Água filtrada"],
+                "preco": 6.0,
+                "categoria": "Cafés"
+            },
+            {
+                "id": 2,
+                "nome": "Cappuccino",
+                "descricao": "Perfeitamente equilibrado entre café, leite vaporizado e espuma cremosa. Uma escolha clássica que conforta e aquece.",
+                "ingredientes": [
+                    "Café expresso",
+                    "Leite",
+                    "Espuma de leite cremosa"
+                ],
+                "preco": 8.0,
+                "categoria": "Cafés"
+            },
+            {
+                "id": 3,
+                "nome": "Café com Leite",
+                "descricao": "Aconchegante e familiar. O equilíbrio ideal entre o sabor do café e a suavidade do leite, para qualquer momento do dia.",
+                "ingredientes": [
+                    "Café expresso",
+                    "Leite",
+                    "(Açúcar | opcional)"
+                ],
+                "preco": 7.5,
+                "categoria": "Cafés"
+            }
+        ],
+        "cafes_especiais": [
+            {
+                "id": 4,
+                "nome": "Affogato",
+                "descricao": "Uma deliciosa combinação italiana de café expresso quente servido sobre uma bola de sorvete. Cremoso, contrastante e inesquecível.",
+                "ingredientes": [
+                    "Café expresso quente",
+                    "Sorvete de Baunilha ou Doce de Leite"
+                ],
+                "preco": 12.0,
+                "categoria": "Cafés Especiais"
+            },
+            {
+                "id": 5,
+                "nome": "Mocha",
+                "descricao": "Um abraço em forma de bebida. Café encorpado, leite cremoso e chocolate em pó se unem em uma mistura aveludada e acolhedora.",
+                "ingredientes": [
+                    "Café expresso",
+                    "Leite",
+                    "Chocolate em pó",
+                    "(Creme ou/e Caramelo | Opcionais)"
+                ],
+                "preco": 10.0,
+                "categoria": "Cafés Especiais"
+            },
+            {
+                "id": 6,
+                "nome": "Café Gelado",
+                "descricao": "Refrescante e cheio de sabor. Uma alternativa leve e revigorante para quem ama café em qualquer estação.",
+                "ingredientes": [
+                    "Café expresso",
+                    "Gelo",
+                    "Chantilly",
+                    "(Leite Condensado, Açúcar | Opcionais)"
+                ],
+                "preco": 9.0,
+                "categoria": "Cafés Especiais"
+            }
+        ],
+        "outras_bebidas": [
+            {
+                "id": 7,
+                "nome": "Água Natural",
+                "descricao": "Essencial e revigorante, perfeita para acompanhar qualquer refeição.",
+                "ingredientes": [],
+                "preco": 3.0,
+                "categoria": "Outras Bebidas"
+            },
+            {
+                "id": 8,
+                "nome": "Suco de Laranja",
+                "descricao": "Refrescante, natural e feito na hora. Uma explosão de sabor cítrico para energizar o seu dia.",
+                "ingredientes": ["Laranja", "(Açúcar, Gelo | Opcionais)"],
+                "preco": 7.0,
+                "categoria": "Outras Bebidas"
+            },
+            {
+                "id": 9,
+                "nome": "Chocolate Quente",
+                "descricao": "Aconchegante, cremoso e doce na medida certa. Perfeito para aquecer os dias frios com sabor e carinho.",
+                "ingredientes": [
+                    "Leite",
+                    "Chocolate em pó",
+                    "(Açúcar, Creme de Leite, Canela | Opcionais)"
+                ],
+                "preco": 8.0,
+                "categoria": "Outras Bebidas"
+            }
+        ]
+    },
+    "lanches": {
+        "sanduiches": [
+            {
+                "id": 10,
+                "nome": "Monte seu Sanduíche",
+                "descricao": "Escolha seus ingredientes preferidos e monte um lanche personalizado, fresco e cheio de sabor.",
+                "ingredientes": [
+                    {
+                        "ingrediente": "Pão",
+                        "opcoes": ["Baguete", "Francês"]
+                    },
+                    {
+                        "ingrediente": "Proteína",
+                        "opcoes": ["Frango", "Carne"]
+                    },
+                    {
+                        "ingrediente": "Verduras",
+                        "opcoes": ["Tomate", "Cebola", "Milho", "Alface"]
+                    },
+                    {
+                        "ingrediente": "Molho",
+                        "opcoes": ["Branco", "Barbecue"]
+                    }
+                ],
+                "preco": 18.5,
+                "categoria": "Sanduíches"
+            },
+            {
+                "id": 11,
+                "nome": "Misto Quente",
+                "descricao": "Um clássico que nunca sai de moda. Pão tostadinho, queijo derretido e presunto no ponto certo — simples, saboroso e irresistível.",
+                "ingredientes": ["Pão de forma", "Presunto", "Queijo Muçarela"],
+                "preco": 9.0,
+                "categoria": "Sanduíches"
+            }
+        ],
+        "sobremesas": [
+            {
+                "id": 12,
+                "nome": "Petit Gâteau",
+                "descricao": "Bolinho quente com recheio cremoso servido com sorvete gelado. Uma sobremesa elegante, marcante e cheia de contrastes.",
+                "ingredientes": [
+                    "Chocolate meio amargo",
+                    "Manteiga",
+                    "Açúcar",
+                    "Ovos",
+                    "Farinha de trigo",
+                    "Sorvete de baunilha",
+                    "(Essência de baunilha | Opcional)"
+                ],
+                "preco": 14.0,
+                "categoria": "Sobremesas"
+            },
+            {
+                "id": 13,
+                "nome": "Brownie",
+                "descricao": "Crocante por fora, macio por dentro. Uma verdadeira explosão de sabor, feita para adoçar o seu momento com muito carinho.",
+                "ingredientes": [
+                    "Chocolate meio amargo",
+                    "Manteiga",
+                    "Açúcar",
+                    "Ovos",
+                    "Farinha de trigo",
+                    "(Cacau em pó, Essência de baunilha | Opcionais)"
+                ],
+                "preco": 10.0,
+                "categoria": "Sobremesas"
+            }
+        ]
+    }
+}
