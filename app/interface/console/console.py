@@ -1,4 +1,4 @@
-from app.repositorios.repositorio_cardapio import exibir_cardapio, cadastrar_item
+from app.repositorios.repositorio_cardapio import exibir_cardapio, cadastrar_item, carregar_cardapio
 from app.utilitarios.utils import limpar_console
 
     
@@ -24,7 +24,9 @@ def menu_administrativo():
             print('❌ Opção inválida! Digite um número.')
             
     if opcao == 1:
-        cadastrar_item()
+        cardapio = carregar_cardapio()
+        if cardapio:
+            cadastrar_item(cardapio)
 
     
 def menu_principal():

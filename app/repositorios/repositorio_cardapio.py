@@ -60,7 +60,7 @@ def gerar_proximo_id(cardapio: dict) -> int:
         default=0
     ) + 1
 
-def cadastrar_item():
+def cadastrar_item(cardapio:dict):
     limpar_console()
     print('\n🌟 📝 Cadastro de Novo Item no Cardápio 🌟')
     print('-' * 50)
@@ -70,8 +70,6 @@ def cadastrar_item():
         'lanches': ['sanduiches', 'sobremesas']
     }
 
-    carregar_cardapio()
-    
     categoria_geral = obter_texto('\n📂 Digite a Categoria Geral (ex: bebidas, lanches): ').lower()
     if categoria_geral not in categorias_validas:
         print('\n⚠️ Categoria geral inválida!')
