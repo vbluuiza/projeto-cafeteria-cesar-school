@@ -22,3 +22,11 @@ def obter_float(msg):
 import os
 def limpar_console():
     os.system('cls' if os.name == 'nt' else 'clear')
+    
+def gerar_proximo_id(cardapio: dict) -> int:
+    return max(
+        (item['id'] for categoria in cardapio.values()
+                        for subcategoria in categoria.values()
+                            for item in subcategoria),
+        default=0
+    ) + 1
