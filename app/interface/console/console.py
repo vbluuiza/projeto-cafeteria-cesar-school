@@ -1,6 +1,5 @@
-from app.repositorios.repositorio_cardapio import exibir_cardapio, cadastrar_item, carregar_cardapio
 from app.utilitarios.utils import limpar_console
-
+from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item
     
 def menu_administrativo():
     limpar_console()
