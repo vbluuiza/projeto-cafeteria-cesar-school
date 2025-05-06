@@ -1,5 +1,7 @@
 from app.utilitarios.utils import limpar_console
+from app.utilitarios.utils import obter_texto
 from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, remover_item_cardapio, editar_item_cardapio
+from app.servicos.servico_pedidos import criar_pedido
 
 def menu_administrativo():
     limpar_console()
@@ -51,7 +53,9 @@ def menu_principal():
     print('3️⃣  Ver Status do Pedido')
     print('0️⃣  Sair')
     print('=' * 50)
-    
+
+    cardapio = carregar_cardapio()
+
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
@@ -64,3 +68,11 @@ def menu_principal():
     
     if opcao == 1:
         exibir_cardapio()
+        fazer_pedido = obter_texto("Gostaria de pedir algo? (s/n): ")
+        if fazer_pedido not in ['s', 'n']:
+            return
+        
+        if fazer_pedido != 's':
+            return
+        criar_pedido(cardapio)
+        
