@@ -1,5 +1,6 @@
 from app.utilitarios.utils import limpar_console
 from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, remover_item_cardapio, editar_item_cardapio
+
 def menu_administrativo():
     limpar_console()
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
@@ -11,13 +12,12 @@ def menu_administrativo():
     print('0️⃣  Sair')
     print('=' * 50)
     
-
     cardapio = carregar_cardapio()
     
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3):
+            if opcao in (0, 1, 2, 3, 4):
                 break
             else:
                 print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3)')
@@ -33,6 +33,13 @@ def menu_administrativo():
     elif opcao == 3:
         if cardapio:
             remover_item_cardapio(cardapio)
+            
+    elif opcao == 4:
+        if cardapio:
+            exibir_cardapio()
+    
+    elif opcao == 5:
+        print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n')
             
     
 def menu_principal():
