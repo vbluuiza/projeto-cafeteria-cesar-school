@@ -1,6 +1,8 @@
 from app.interface.console.console import menu_principal, menu_administrativo
+from app.utilitarios.utils import limpar_console
 
 def inicializar_cafeteria():
+    limpar_console()
     print('\n' + '☕👥 BEM-VINDO À CAFÉ VOYAGE  👥☕'.center(50, '='))
     print('=' * 50)
     print('Você é:')
