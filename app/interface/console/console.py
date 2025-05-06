@@ -1,6 +1,5 @@
 from app.utilitarios.utils import limpar_console
-from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, editar_item
-    
+from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, remover_item_cardapio, editar_item_cardapio
 def menu_administrativo():
     limpar_console()
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
@@ -30,7 +29,11 @@ def menu_administrativo():
             cadastrar_item(cardapio)
     elif opcao == 2:
         if cardapio:
-            editar_item(cardapio)
+            editar_item_cardapio(cardapio)
+    elif opcao == 3:
+        if cardapio:
+            remover_item_cardapio(cardapio)
+            
     
 def menu_principal():
     limpar_console()
@@ -54,5 +57,3 @@ def menu_principal():
     
     if opcao == 1:
         exibir_cardapio()
-
-
