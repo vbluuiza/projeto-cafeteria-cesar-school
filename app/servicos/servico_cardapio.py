@@ -2,7 +2,7 @@ import json
 from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_cardapio
 from app.utilitarios.utils import limpar_console
 from app.utilitarios.utils import obter_float, obter_int, obter_texto
-from app.utilitarios.utils import gerar_proximo_id
+from app.utilitarios.utils import gerar_proximo_id, obter_categoria_e_subcategoria_valida
 
 def exibir_cardapio():
     limpar_console()
