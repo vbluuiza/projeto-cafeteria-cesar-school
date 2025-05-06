@@ -2,7 +2,7 @@ import json
 from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_cardapio
 from app.utilitarios.utils import limpar_console
 from app.utilitarios.utils import obter_float, obter_int, obter_texto
-from app.utilitarios.utils import gerar_proximo_id, obter_categoria_e_subcategoria_valida
+from app.utilitarios.utils import gerar_proximo_id, obter_categoria_e_subcategoria_valida, exibir_titulo_cardapio
 
 def exibir_cardapio():
     limpar_console()
@@ -26,8 +26,9 @@ def exibir_bebidas(cardapio: dict):
         if bebidas:
             categoria_formatada = categoria.replace('_', ' ').title()
             emoji = '☕' if 'cafe' in categoria.lower() else '🍹'
-            print(f"\n{emoji} {categoria_formatada.upper()} {emoji}".center(60, ' '))
-            print(' ' + '-' * 58)
+            
+            exibir_titulo_cardapio(emoji, categoria_formatada)
+            
             for opcao_bebida in bebidas:
                 nome = opcao_bebida['nome']
                 preco = f'R$ {opcao_bebida['preco']:.2f}'
@@ -39,8 +40,9 @@ def exibir_lanches(cardapio: dict):
         if lanches:
             categoria_formatada = categoria.replace('_', ' ').title()
             emoji = '🥪' if 'sanduiches' in categoria.lower() else '🍨'
-            print(f"\n{emoji} {categoria_formatada.upper()} {emoji}".center(60, ' '))
-            print(' ' + '-' * 58)
+            
+            exibir_titulo_cardapio(emoji, categoria_formatada)
+            
             for opcao_lanche in lanches:
                 nome = opcao_lanche['nome']
                 preco = f'R$ {opcao_lanche['preco']:.2f}'
@@ -76,7 +78,6 @@ def cadastrar_item(cardapio:dict):
     print(f'\n✅ "{nome.title()}" foi adicionado à categoria "{categoria_especifica}" dentro de "{categoria_geral}" com sucesso!')
     
     salvar_cardapio(cardapio)
-        
         
 def editar_item_cardapio(cardapio:dict):
     limpar_console()
@@ -118,7 +119,6 @@ def editar_item_cardapio(cardapio:dict):
     if not item_encontrado:
         print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
         
-        
 def remover_item_cardapio(cardapio:dict):
     limpar_console()
     print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
@@ -135,7 +135,6 @@ def remover_item_cardapio(cardapio:dict):
             cardapio[categoria_geral][categoria_especifica].remove(item)
             print(f'\n✅ Item "{item_remover}" removido com sucesso!')
             salvar_cardapio(cardapio)
-            print("😡 Usuário removido com sucesso! ")
             break  
 
     if not item_encontrado:
