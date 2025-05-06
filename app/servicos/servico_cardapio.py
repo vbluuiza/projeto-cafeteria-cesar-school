@@ -51,23 +51,9 @@ def cadastrar_item(cardapio:dict):
     limpar_console()
     print('\n🌟 📝 Cadastro de Novo Item no Cardápio 🌟')
     print('-' * 50)
-    
-    categorias_validas = {
-        'bebidas': ['cafes', 'cafes_especiais', 'outras_bebidas'],
-        'lanches': ['sanduiches', 'sobremesas']
-    }
 
-    categoria_geral = obter_texto('\n📂 Digite a Categoria Geral (ex: bebidas, lanches): ').lower()
-    if categoria_geral not in categorias_validas:
-        print('\n⚠️ Categoria geral inválida!')
-        return
-        
-        
-    categoria_especifica = obter_texto("🏷️  Digite a Categoria Específica (ex: cafes, cafes_especiais, sobremesas...): ").lower()
-    if categoria_especifica not in categorias_validas[categoria_geral]:
-        print('\n⚠️ Categoria específica inválida!')
-        return
-    
+    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
+
     _id = gerar_proximo_id(cardapio)
     nome = obter_texto('📛 Nome do item: ')
     descricao = obter_texto('🖋️  Descrição do item: ')
@@ -92,30 +78,22 @@ def cadastrar_item(cardapio:dict):
     salvar_cardapio(cardapio)
         
         
-def editar_item(cardapio:dict):
+def editar_item_cardapio(cardapio:dict):
     limpar_console()
     print('\n' + '🌟📝 EDITAR ITEM NO CARDÁPIO 📝🌟'.center(46, '─'))
     print('-' * 50)
     
-    categoria_editar = obter_texto('\n📂 Informe a categoria geral do item (ex: bebidas, lanches): ').lower()
-    if categoria_editar not in cardapio:
-        print('\n❌ Categoria não encontrada. Verifique e tente novamente.')
-        return
+    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
     
-    categoria_especifica_editar = obter_texto('\n📁 Informe a subcategoria do item (ex: cafés, sobremesas): ').lower()
-    if categoria_especifica_editar not in cardapio[categoria_editar]:
-        print('\n❌ Subcategoria não encontrada. Verifique e tente novamente.')
-        return
-    
-    categoria_especifica_items = [item['nome'] for item in cardapio[categoria_editar][categoria_especifica_editar]]    
-    print(f'\n📋 Itens disponíveis em "{categoria_especifica_editar}" ({categoria_editar}):\n')
+    categoria_especifica_items = [item['nome'] for item in cardapio[categoria_geral][categoria_especifica]]    
+    print(f'\n📋 Itens disponíveis em "{categoria_especifica}" ({categoria_geral}):\n')
     for item in categoria_especifica_items:
         print(f'  ➤  {item}')
 
     item_editar = obter_texto('\n✏️  Informe o nome exato do item que deseja editar: ')
     item_encontrado = False
 
-    for item in cardapio[categoria_editar][categoria_especifica_editar]:
+    for item in cardapio[categoria_geral][categoria_especifica]:
         if item['nome'] == item_editar:
             item_encontrado = True
             print('\n🔧 Preencha os novos dados do item:\n')
@@ -141,3 +119,24 @@ def editar_item(cardapio:dict):
         print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
         
         
+def remover_item_cardapio(cardapio:dict):
+    limpar_console()
+    print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
+    print('-' * 50)
+    
+    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
+    
+    item_remover = obter_texto('\n✏️  Informe o nome exato do item que deseja remover: ')
+    item_encontrado = False
+
+    for item in cardapio[categoria_geral][categoria_especifica]:
+        if item['nome'] == item_remover:
+            item_encontrado = True
+            cardapio[categoria_geral][categoria_especifica].remove(item)
+            print(f'\n✅ Item "{item_remover}" removido com sucesso!')
+            salvar_cardapio(cardapio)
+            print("😡 Usuário removido com sucesso! ")
+            break  
+
+    if not item_encontrado:
+        print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
