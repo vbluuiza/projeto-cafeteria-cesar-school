@@ -1,5 +1,5 @@
 import json
-from app.repositorios.repositorio_cardapio import carregar_cardapio
+from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_cardapio
 from app.utilitarios.utils import limpar_console
 from app.utilitarios.utils import obter_float, obter_int, obter_texto
 from app.utilitarios.utils import gerar_proximo_id
@@ -46,7 +46,6 @@ def exibir_lanches(cardapio: dict):
                 preco = f'R$ {opcao_lanche['preco']:.2f}'
                 print(f'  ➤ {nome.ljust(40, '.')} {preco.rjust(12)}')
     print('\n' + '─' * 60 + '\n')
-    
 
 def cadastrar_item(cardapio:dict):
     limpar_console()
@@ -90,11 +89,55 @@ def cadastrar_item(cardapio:dict):
     cardapio[categoria_geral][categoria_especifica].append(novo_item)
     print(f'\n✅ "{nome.title()}" foi adicionado à categoria "{categoria_especifica}" dentro de "{categoria_geral}" com sucesso!')
     
-    try:
-        with open('app/dados/dados_json/cardapio.json', 'w', encoding='utf-8') as file:
-            data = json.dump(cardapio, file, ensure_ascii=False, indent=4)
-            print("\n✅ Cardápio atualizado e salvo com sucesso!")
-    except Exception as e:
-        print(f'\n⚠️ Erro ao salvar o cardápio: {e}')    
-        import traceback
-        traceback.print_exc() #
+    salvar_cardapio(cardapio)
+        
+        
+def editar_item(cardapio:dict):
+    limpar_console()
+    print('\n' + '🌟📝 EDITAR ITEM NO CARDÁPIO 📝🌟'.center(46, '─'))
+    print('-' * 50)
+    
+    categoria_editar = obter_texto('\n📂 Informe a categoria geral do item (ex: bebidas, lanches): ').lower()
+    if categoria_editar not in cardapio:
+        print('\n❌ Categoria não encontrada. Verifique e tente novamente.')
+        return
+    
+    categoria_especifica_editar = obter_texto('\n📁 Informe a subcategoria do item (ex: cafés, sobremesas): ').lower()
+    if categoria_especifica_editar not in cardapio[categoria_editar]:
+        print('\n❌ Subcategoria não encontrada. Verifique e tente novamente.')
+        return
+    
+    categoria_especifica_items = [item['nome'] for item in cardapio[categoria_editar][categoria_especifica_editar]]    
+    print(f'\n📋 Itens disponíveis em "{categoria_especifica_editar}" ({categoria_editar}):\n')
+    for item in categoria_especifica_items:
+        print(f'  ➤  {item}')
+
+    item_editar = obter_texto('\n✏️  Informe o nome exato do item que deseja editar: ')
+    item_encontrado = False
+
+    for item in cardapio[categoria_editar][categoria_especifica_editar]:
+        if item['nome'] == item_editar:
+            item_encontrado = True
+            print('\n🔧 Preencha os novos dados do item:\n')
+            
+            id_original = item['id']
+            categoria_original = item['categoria']
+
+            item['nome'] = obter_texto(f'📛 Novo nome do item: ')
+            item['descricao'] = obter_texto(f'🖋️  Nova descrição do item: ')
+            ingredientes_str = obter_texto('🥄 Ingredientes (separados por vírgula): ')
+            ingredientes = [ingrediente.strip() for ingrediente in ingredientes_str.split(',')]
+            item['ingredientes'] = ingredientes
+            item['preco'] = obter_float(f'💰 Preco Antigo {item['preco']} | Novo preço (ex: 12.50) : ')
+
+            item['id'] = id_original
+            item['categoria'] = categoria_original
+            
+            salvar_cardapio(cardapio)
+            print('\n✅ Item editado com sucesso!')
+            break
+        
+    if not item_encontrado:
+        print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
+        
+        
