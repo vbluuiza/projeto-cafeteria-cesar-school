@@ -1,5 +1,5 @@
 from app.utilitarios.utils import limpar_console
-from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item
+from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, editar_item
     
 def menu_administrativo():
     limpar_console()
@@ -12,6 +12,9 @@ def menu_administrativo():
     print('0️⃣  Sair')
     print('=' * 50)
     
+
+    cardapio = carregar_cardapio()
+    
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
@@ -23,10 +26,11 @@ def menu_administrativo():
             print('❌ Opção inválida! Digite um número.')
             
     if opcao == 1:
-        cardapio = carregar_cardapio()
         if cardapio:
             cadastrar_item(cardapio)
-
+    elif opcao == 2:
+        if cardapio:
+            editar_item(cardapio)
     
 def menu_principal():
     limpar_console()
