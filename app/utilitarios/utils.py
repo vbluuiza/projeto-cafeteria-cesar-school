@@ -49,3 +49,7 @@ def obter_categoria_e_subcategoria_valida():
         return
     
     return categoria_geral, categoria_especifica    
+
+def exibir_titulo_cardapio(emoji, categoria_formatada):
+    print(f"\n{emoji} {categoria_formatada.upper()} {emoji}".ljust(45) + f"Preço".rjust(10))
+    print(' ' + '-' * 58)
