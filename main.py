@@ -8,7 +8,7 @@ def inicializar_cafeteria():
     print('Você é:')
     print('1️⃣  Cliente')
     print('2️⃣  Garçom')
-    print('3   Gerente')
+    print('3️⃣  Gerente')
     print('0️⃣  Sair')
     print('=' * 50)
 

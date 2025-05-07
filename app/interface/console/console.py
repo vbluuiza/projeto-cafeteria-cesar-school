@@ -2,8 +2,9 @@ from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global  import obter_texto
 
 from app.servicos.admin.servico_cardapio_admin import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
-from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
 from app.servicos.admin.servico_mesas_admin import cadastrar_mesa, carregar_mesas, remover_mesa, buscar_mesa_id
+from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
+from app.servicos.funcionarios.servico_pedidos_funcionario import criar_pedido
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
@@ -16,9 +17,9 @@ def menu_funcionario():
     limpar_console()
     print('\n' + '🔧⚙️ MENU FUNCIONÁRIO ⚙️🔧'.center(50, '='))
     print('=' * 50)
-    print('1 Fazer pedido')
-    print('2 Editar pedido')
-    print('3 Cancelar pedido')
+    print('1️⃣ Fazer pedido')
+    print('2️⃣ Editar pedido')
+    print('3️⃣ Cancelar pedido')
     print('0️⃣  Sair')
     print('=' * 50)
 
@@ -44,8 +45,8 @@ def menu_administrativo():
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
     print('=' * 50)
     print('1️⃣  Opções de gerenciamento de mesa')
-    print('2   Opções de gerenciamento de cardápio')
-    print('3   Opções de gerenciamento de pedidos')
+    print('2️⃣  Opções de gerenciamento de cardápio')
+    print('3️⃣  Opções de gerenciamento de pedidos')
     print('0️⃣  Sair')
     print('=' * 50)
     
@@ -70,10 +71,10 @@ def menu_administrativo_mesa():
     limpar_console()
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
     print('=' * 50)
-    print('1 Adicionar Mesa')
-    print('2 Remover Mesa')
-    print('3 Listar mesas')
-    print('4 Editar')
+    print('1️⃣ Adicionar Mesa')
+    print('2️⃣ Remover Mesa')
+    print('3️⃣ Listar mesas')
+    print('4️⃣ Editar')
     print('0️⃣  Sair')
     print('=' * 50)
     
@@ -111,7 +112,7 @@ def menu_administrativo_cardapio():
     print('2️⃣  Editar Item do Cardápio')
     print('3️⃣  Remover Item do Cardápio')
     print('4️⃣  Ver Itens do Cardápio')
-    print('8 - buscar item cardapio')
+    print('5️⃣ - buscar item cardapio')
     print('0️⃣  Sair')
     print('=' * 50)
 
@@ -138,7 +139,7 @@ def menu_administrativo_cardapio():
             remover_item_cardapio(cardapio)       
     elif opcao == 4:
         if cardapio:
-            exibir_cardapio(cardapio)
+            exibir_cardapio()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
 
