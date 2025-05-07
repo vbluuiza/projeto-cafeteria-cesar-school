@@ -54,3 +54,20 @@ def remover_mesa():
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesa foi removida com sucesso!')
     else:
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
+
+def buscar_mesa_id():
+    dados_das_mesas = carregar_mesas()
+    
+    limpar_console()
+    print('\n🔍 📋 BUSCAR MESA POR ID 📋 🔍')
+    print('-' * 50)
+
+    buscar_mesa = obter_int("🔢 Informe o ID da mesa que deseja buscar: ")
+    for mesa in dados_das_mesas['lista_de_mesas']:
+        if mesa['id'] ==  buscar_mesa:
+            print(f"\n✅ Mesa encontrada!")
+            print(f"🪑 ID da Mesa: {mesa['id']}")
+            print(f'📌 Status: {mesa['status']} ')
+            break
+    else:
+        print(f'\n❌ Mesa não encontrada. Verifique o ID e tente novamente.')
