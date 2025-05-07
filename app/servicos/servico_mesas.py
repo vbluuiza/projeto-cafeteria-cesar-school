@@ -25,7 +25,10 @@ def cadastrar_mesa():
         
     salvar_mesas(dados_das_mesas)
     
-    print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesas foram adicionadas com sucesso!')
+    if(quantia_de_mesas_a_adicionar == 1):
+        print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesa foi adicionada com sucesso!')
+    else:
+        print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesas foram adicionadas com sucesso!')
 
 def remover_mesa():
 
@@ -42,4 +45,7 @@ def remover_mesa():
 
     salvar_mesas(dados_das_mesas)
     
-    print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
+    if(quantia_de_mesas_a_remover == 1):
+        print(f'\n✅ "{quantia_de_mesas_a_remover} Mesa foi removida com sucesso!')
+    else:
+        print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
