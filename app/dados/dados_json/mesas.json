@@ -3,27 +3,27 @@
     "lista_de_mesas": [
         {
             "id": 1,
-            "status": 0
+            "status": "Disponível"
         },
         {
             "id": 2,
-            "status": 0
+            "status": "Disponível"
         },
         {
             "id": 3,
-            "status": 0
+            "status": "Disponível"
         },
         {
             "id": 4,
-            "status": 0
+            "status": "Disponível"
         },
         {
             "id": 5,
-            "status": 0
+            "status": "Disponível"
         },
         {
             "id": 6,
-            "status": 0
+            "status": "Disponível"
         }
     ]
 }

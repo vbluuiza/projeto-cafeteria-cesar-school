@@ -3,6 +3,11 @@ from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
 from app.utilitarios.utils import limpar_console
 from app.utilitarios.utils import obter_int
 
+STATUS_MESA = {
+    0: 'Disponível',
+    1: 'Ocupada',
+    3: 'Em espera',
+}
 
 def cadastrar_mesa():
 
@@ -18,7 +23,7 @@ def cadastrar_mesa():
         new_id = dados_das_mesas['total_de_mesas']+1
         nova_mesa = {
             'id': new_id,
-            'status': 0
+            'status': STATUS_MESA[0]
         } 
         dados_das_mesas['lista_de_mesas'].append(nova_mesa)
         dados_das_mesas['total_de_mesas'] += 1
