@@ -49,8 +49,6 @@ def menu_principal():
     print('\n' + '☕🍩 BEM-VINDO AO CAFÉ VOYAGE! ☕🍩'.center(50, '='))
     print('=' * 50)
     print('1️⃣  Ver Cardápio')
-    print('2️⃣  Fazer Pedido')
-    print('3️⃣  Ver Status do Pedido')
     print('0️⃣  Sair')
     print('=' * 50)
 
@@ -68,7 +66,7 @@ def menu_principal():
     
     if opcao == 1:
         exibir_cardapio()
-        fazer_pedido = obter_texto("Gostaria de pedir algo? (s/n): ")
+        fazer_pedido = obter_texto("Gostaria de pedir algo? (s/n): ").lower()
         if fazer_pedido not in ['s', 'n']:
             return
         
