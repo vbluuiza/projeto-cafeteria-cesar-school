@@ -1,7 +1,7 @@
 import json
 from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
-from app.utilitarios.utils import limpar_console
-from app.utilitarios.utils import obter_int
+from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_global import obter_int
 
 STATUS_MESA = {
     0: 'Disponível',

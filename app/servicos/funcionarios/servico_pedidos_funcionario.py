@@ -1,8 +1,8 @@
 import json
 from app.repositorios.repositorio_pedidos import carregar_dados
-from app.utilitarios.utils import limpar_console
-from app.utilitarios.utils import obter_texto
-from app.servicos.servico_cardapio import exibir_cardapio
+from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_global import obter_texto
+from app.servicos.utilitarios_servicos.utils import exibir_cardapio
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 
 def criar_pedido(cardapio:dict):
