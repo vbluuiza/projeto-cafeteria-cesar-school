@@ -1,5 +1,5 @@
-from app.interface.console.console import menu_principal, menu_administrativo,menu_funcionario
-from app.utilitarios.utils import limpar_console
+from app.interface.console.console import menu_principal, menu_administrativo, menu_funcionario
+from app.utils.utilitarios_global import limpar_console
 
 def inicializar_cafeteria():
     limpar_console()
