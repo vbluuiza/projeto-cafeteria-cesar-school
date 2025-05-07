@@ -2,7 +2,7 @@ from app.utilitarios.utils import limpar_console
 from app.utilitarios.utils import obter_texto
 from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, remover_item_cardapio, editar_item_cardapio
 from app.servicos.servico_pedidos import criar_pedido
-from app.servicos.servico_mesas import cadastrar_mesa, carregar_mesas
+from app.servicos.servico_mesas import cadastrar_mesa, carregar_mesas, remover_mesa
 
 
 def menu_administrativo():
@@ -14,19 +14,20 @@ def menu_administrativo():
     print('3️⃣  Remover Item do Cardápio')
     print('4️⃣  Ver Itens do Cardápio')
     print('5 Adicionar Mesa')
+    print('6 Remover Mesa')
     print('0️⃣  Sair')
     print('=' * 50)
     
     cardapio = carregar_cardapio()
-    mesas = carregar_mesas
+    mesas = carregar_mesas()
     
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3, 4, 5,):
+            if opcao in (0, 1, 2, 3, 4, 5, 6):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5, 6)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
             
@@ -47,6 +48,9 @@ def menu_administrativo():
     elif opcao == 5:
         if mesas:
             cadastrar_mesa()
+    elif opcao == 6:
+        if mesas:
+            remover_mesa()
 
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n')    
