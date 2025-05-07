@@ -4,7 +4,11 @@ def obter_texto(msg):
 def obter_int(msg):
      while True:
         try:
-            return int(input(msg).strip())
+            valor = int(input(msg).strip())
+            if valor > 0:
+                return valor
+            else:
+                print("⚠️ O preço não pode ser negativo.")
         except ValueError:
             print("⚠️ Por favor, digite um número inteiro válido.")
 
@@ -12,7 +16,7 @@ def obter_float(msg):
     while True:
         try:
             valor = float(input(msg).strip())
-            if valor >= 0:
+            if valor > 0:
                 return valor
             else:
                 print("⚠️ O preço não pode ser negativo.")
