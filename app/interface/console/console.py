@@ -1,8 +1,12 @@
-from app.utilitarios.utils import limpar_console
-from app.utilitarios.utils import obter_texto
-from app.servicos.servico_cardapio import exibir_cardapio, carregar_cardapio, cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
-from app.servicos.servico_pedidos import criar_pedido
-from app.servicos.servico_mesas import cadastrar_mesa, carregar_mesas, remover_mesa, buscar_mesa_id
+from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_global  import obter_texto
+
+from app.servicos.admin.servico_cardapio_admin import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
+from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
+from app.servicos.admin.servico_mesas_admin import cadastrar_mesa, carregar_mesas, remover_mesa, buscar_mesa_id
+
+from app.repositorios.repositorio_cardapio import carregar_cardapio
+from app.repositorios.repositorio_mesas import carregar_mesas
 
 
 def menu_administrativo():
