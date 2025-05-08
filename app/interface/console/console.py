@@ -127,10 +127,10 @@ def menu_administrativo_cardapio():
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3, 4, 5, 6, 7, 8):
+            if opcao in (0, 1, 2, 3, 4, 5):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5, 6)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5,)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
 
@@ -146,6 +146,9 @@ def menu_administrativo_cardapio():
     elif opcao == 4:
         if cardapio:
             exibir_cardapio()
+    elif opcao == 5:
+        if cardapio:
+            buscar_item_cardapio()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
 
