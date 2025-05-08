@@ -1,5 +1,5 @@
 import json
-from app.repositorios.repositorio_pedidos import carregar_pedidos
+from app.repositorios.repositorio_pedidos import carregar_dados
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_texto
 from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
