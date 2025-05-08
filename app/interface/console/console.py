@@ -8,9 +8,12 @@ from app.servicos.funcionarios.servico_pedidos_funcionario import criar_pedido
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
+from app.repositorios.repositorio_pedidos import carregar_pedidos
+
 
 def menu_funcionario():
 
+    pedidos = carregar_pedidos()
     cardapio = carregar_cardapio()
     mesas = carregar_mesas()
 
@@ -35,7 +38,7 @@ def menu_funcionario():
             
     if opcao == 1:
         if cardapio:
-            criar_pedido()
+            criar_pedido(cardapio,pedidos,mesas)
                
     elif opcao == 0:
         print('\n👋 Até logo! \n')    

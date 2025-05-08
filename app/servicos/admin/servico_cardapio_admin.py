@@ -35,6 +35,27 @@ def cadastrar_item(cardapio:dict):
     
     salvar_cardapio(cardapio)
         
+def remover_item_cardapio(cardapio:dict):
+    limpar_console()
+    print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
+    print('-' * 50)
+    
+    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
+    
+    item_remover = obter_texto('\n✏️  Informe o nome exato do item que deseja remover: ')
+    item_encontrado = False
+
+    for item in cardapio[categoria_geral][categoria_especifica]:
+        if item['nome'] == item_remover:
+            item_encontrado = True
+            cardapio[categoria_geral][categoria_especifica].remove(item)
+            print(f'\n✅ Item "{item_remover}" removido com sucesso!')
+            salvar_cardapio(cardapio)
+            break  
+
+    if not item_encontrado:
+        print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
+
 def editar_item_cardapio(cardapio:dict):
     limpar_console()
     print('\n' + '🌟📝 EDITAR ITEM NO CARDÁPIO 📝🌟'.center(46, '─'))
@@ -74,28 +95,7 @@ def editar_item_cardapio(cardapio:dict):
         
     if not item_encontrado:
         print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
-        
-def remover_item_cardapio(cardapio:dict):
-    limpar_console()
-    print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
-    print('-' * 50)
-    
-    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
-    
-    item_remover = obter_texto('\n✏️  Informe o nome exato do item que deseja remover: ')
-    item_encontrado = False
-
-    for item in cardapio[categoria_geral][categoria_especifica]:
-        if item['nome'] == item_remover:
-            item_encontrado = True
-            cardapio[categoria_geral][categoria_especifica].remove(item)
-            print(f'\n✅ Item "{item_remover}" removido com sucesso!')
-            salvar_cardapio(cardapio)
-            break  
-
-    if not item_encontrado:
-        print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
-        
+           
 def buscar_item_cardapio():
     cardapio = carregar_cardapio()
     

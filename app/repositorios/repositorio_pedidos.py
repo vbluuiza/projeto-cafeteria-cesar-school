@@ -2,18 +2,21 @@ import json
 
 CAMINHO = 'app/dados/dados_json/pedidos.json'
 
-def carregar_dados():
+def carregar_pedidos():
     try:
         with open(CAMINHO, 'r', encoding='utf-8') as file:
             return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError):
+    except FileNotFoundError:
+        print('Erro: Arquivo não encontrado.')    
+    except json.JSONDecodeError:
         print('❌ Erro ao ler o JSON do cardápio.')    
+
     return {}
 
-def  salvar_dados(dados):
+def  salvar_pedidos(pedidos):
     try:
         with open(CAMINHO, 'w', encoding='utf-8') as file:
-            json.dump(dados, file, ensure_ascii=False, indent=4)
+            json.dump(pedidos, file, ensure_ascii=False, indent=4)
     except (FileNotFoundError, json.JSONDecodeError):
         print('❌ Erro ao ler o JSON do cardápio.')
         

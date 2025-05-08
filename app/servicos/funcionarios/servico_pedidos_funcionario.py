@@ -1,15 +1,15 @@
 import json
-from app.repositorios.repositorio_pedidos import carregar_dados
+from app.repositorios.repositorio_pedidos import carregar_pedidos
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_texto
 from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 
-def criar_pedido(cardapio:dict):
+def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
     exibir_cardapio()
 
-    pedidos_dados = carregar_dados()
+    pedidos_dados = carregar_pedidos()
     mesa = 1
     total_mesas = pedidos_dados["total_mesas"] - mesa
 

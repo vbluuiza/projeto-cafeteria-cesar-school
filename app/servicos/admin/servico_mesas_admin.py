@@ -9,7 +9,7 @@ STATUS_MESA = {
     3: 'Em espera',
 }
 
-def cadastrar_mesa(mesas):
+def cadastrar_mesa(mesas:dict):
     
     limpar_console()
     print('\n🌟 📝 Cadastro de nova mesa 🌟')
@@ -51,7 +51,7 @@ def remover_mesa(mesas:dict):
     else:
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
 
-def buscar_mesa_id(mesas):
+def buscar_mesa_id(mesas:dict):
     
     limpar_console()
     print('\n🔍 📋 BUSCAR MESA POR ID 📋 🔍')
