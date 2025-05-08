@@ -92,15 +92,15 @@ def menu_administrativo_mesa():
             
     if opcao == 1:
         if mesas:
-            cadastrar_mesa()
+            cadastrar_mesa(mesas)
 
     elif opcao == 2:
         if mesas:
-            remover_mesa()
+            remover_mesa(mesas)
 
     elif opcao == 3:
         if mesas:
-            buscar_mesa_id()
+            buscar_mesa_id(mesas)
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n')  
 
@@ -112,7 +112,7 @@ def menu_administrativo_cardapio():
     print('2️⃣  Editar Item do Cardápio')
     print('3️⃣  Remover Item do Cardápio')
     print('4️⃣  Ver Itens do Cardápio')
-    print('5️⃣ - buscar item cardapio')
+    print('5️⃣  Buscar item cardapio')
     print('0️⃣  Sair')
     print('=' * 50)
 
