@@ -39,7 +39,10 @@ def menu_funcionario():
     if opcao == 1:
         if cardapio:
             criar_pedido(cardapio,pedidos,mesas)
-               
+
+    elif opcao == 2:
+        editar_pedido(cardapio,pedidos,mesas)
+
     elif opcao == 0:
         print('\n👋 Até logo! \n')    
 
