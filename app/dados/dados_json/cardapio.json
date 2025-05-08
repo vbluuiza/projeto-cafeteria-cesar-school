@@ -5,7 +5,10 @@
                 "id": 1,
                 "nome": "Espresso",
                 "descricao": "Um café intenso e marcante, feito para quem aprecia o sabor autêntico e encorpado de um bom café.",
-                "ingredientes": ["Café especial moído fino", "Água filtrada"],
+                "ingredientes": [
+                    "Café especial moído fino",
+                    "Água filtrada"
+                ],
                 "preco": 6.0,
                 "categoria": "Cafés"
             },
@@ -86,7 +89,10 @@
                 "id": 8,
                 "nome": "Suco de Laranja",
                 "descricao": "Refrescante, natural e feito na hora. Uma explosão de sabor cítrico para energizar o seu dia.",
-                "ingredientes": ["Laranja", "(Açúcar, Gelo | Opcionais)"],
+                "ingredientes": [
+                    "Laranja",
+                    "(Açúcar, Gelo | Opcionais)"
+                ],
                 "preco": 7.0,
                 "categoria": "Outras Bebidas"
             },
@@ -113,19 +119,33 @@
                 "ingredientes": [
                     {
                         "ingrediente": "Pão",
-                        "opcoes": ["Baguete", "Francês"]
+                        "opcoes": [
+                            "Baguete",
+                            "Francês"
+                        ]
                     },
                     {
                         "ingrediente": "Proteína",
-                        "opcoes": ["Frango", "Carne"]
+                        "opcoes": [
+                            "Frango",
+                            "Carne"
+                        ]
                     },
                     {
                         "ingrediente": "Verduras",
-                        "opcoes": ["Tomate", "Cebola", "Milho", "Alface"]
+                        "opcoes": [
+                            "Tomate",
+                            "Cebola",
+                            "Milho",
+                            "Alface"
+                        ]
                     },
                     {
                         "ingrediente": "Molho",
-                        "opcoes": ["Branco", "Barbecue"]
+                        "opcoes": [
+                            "Branco",
+                            "Barbecue"
+                        ]
                     }
                 ],
                 "preco": 18.5,
@@ -135,7 +155,11 @@
                 "id": 11,
                 "nome": "Misto Quente",
                 "descricao": "Um clássico que nunca sai de moda. Pão tostadinho, queijo derretido e presunto no ponto certo — simples, saboroso e irresistível.",
-                "ingredientes": ["Pão de forma", "Presunto", "Queijo Muçarela"],
+                "ingredientes": [
+                    "Pão de forma",
+                    "Presunto",
+                    "Queijo Muçarela"
+                ],
                 "preco": 9.0,
                 "categoria": "Sanduíches"
             }

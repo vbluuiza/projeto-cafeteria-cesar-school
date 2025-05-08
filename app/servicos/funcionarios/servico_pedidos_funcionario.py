@@ -9,9 +9,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
     exibir_cardapio()
 
-    pedidos_dados = carregar_pedidos()
-    mesa = 1
-    total_mesas = pedidos_dados["total_mesas"] - mesa
+    total_mesas = mesas["total_mesas"] - mesa
 
     print("========== ☕ PEDIDO NOVO ☕ ==========")
     print("\nFavor, escolha os itens que desejar!")
