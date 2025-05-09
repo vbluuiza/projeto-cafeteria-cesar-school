@@ -26,3 +26,11 @@ def obter_float(msg):
                 print("⚠️ O preço não pode ser negativo.")
         except ValueError:
             print("⚠️ Por favor, digite um número válido para o preço.")
+
+
+STATUS_PEDIDO = {
+    0: 'Em preparo',
+    1: 'Pronto',
+    2: 'Entregue',
+    3: 'Cancelado'
+}
