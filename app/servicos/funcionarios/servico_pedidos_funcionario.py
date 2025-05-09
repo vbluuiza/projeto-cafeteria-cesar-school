@@ -1,9 +1,13 @@
 import json
+
 from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
+from app.repositorios.repositorio_cardapio import carregar_cardapio
+
+from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
+
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_texto, obter_int
-from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
-from app.repositorios.repositorio_cardapio import carregar_cardapio
+from app.utils.utilitarios_global import STATUS_PEDIDO
 
 def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
@@ -11,7 +15,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     total_de_mesas = mesas['total_de_mesas']
 
     mesa_em_atendimento = obter_int("Mesa atendida: ")
-    
+
     if mesa_em_atendimento > total_de_mesas:
         print(f"Mesa inexistente, mesas disponiveis: 1 até {total_de_mesas}")
 
@@ -21,27 +25,41 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     print("\nFavor, escolha os itens que desejar!")
 
     itens_cardapio_nome = [item['nome'] for categoria in cardapio.values() for subcategoria in categoria.values() for item in subcategoria]
-    
+
     itens_pedidos = []
     while True:
-        
+
         pedido = obter_texto("\nO que gostaria de pedir: ")
 
         if pedido not in itens_cardapio_nome:
             print("\nItem não encontrado.")
             continue
-        
+
         itens_pedidos.append(pedido)
         print("\nItem adicionado com sucesso!")
 
         adicionar_item = obter_texto("\nGostaria de pedir mais alguma coisa? (s/n): ").lower()
-        
+
         if adicionar_item != 'n':
             continue
-        
+        observacao = obter_texto('Gostaria de adicionar alguma observacao?: ')
+        if observacao == '':
+            observacao = 'Nenhuma'
+
+        pedido = {
+            'mesa': mesa_em_atendimento,
+            'itens': itens_pedidos,
+            'observacoes': observacao,
+            'status': STATUS_PEDIDO[0]
+        }
+
+        pedidos['mesas'].append(pedido)
+        salvar_pedidos(pedidos)
+
         break
 
 def editar_pedido(cardapio, pedidos, mesas):
+
     limpar_console()
     exibir_cardapio()
     pedidos_dados = carregar_pedidos()
