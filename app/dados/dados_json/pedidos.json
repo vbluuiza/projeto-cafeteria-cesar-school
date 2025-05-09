@@ -1,9 +1,9 @@
 {
-    "total_mesas": 30,
-    "mesas": [
+    "total_pedidos": 30,
+    "pedidos": [
     
         {
-            "mesa": ,
+            "mesa": 3,
             "itens": [],  
             "observacoes": "",
             "status": ""  
