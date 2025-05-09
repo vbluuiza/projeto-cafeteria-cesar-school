@@ -3,27 +3,33 @@
     "lista_de_mesas": [
         {
             "id": 1,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         },
         {
             "id": 2,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         },
         {
             "id": 3,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         },
         {
             "id": 4,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         },
         {
             "id": 5,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         },
         {
             "id": 6,
-            "status": "Disponível"
+            "status": "Disponível",
+            "reserva": ""
         }
     ]
 }
