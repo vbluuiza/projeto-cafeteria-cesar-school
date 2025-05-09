@@ -1,13 +1,4 @@
 {
     "total_pedidos": 30,
-    "pedidos": [
-    
-        {
-            "mesa": 3,
-            "itens": [],  
-            "observacoes": "",
-            "status": ""  
-    
-        }
-    ]
+    "pedidos": []
 }
