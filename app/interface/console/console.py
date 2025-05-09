@@ -4,7 +4,7 @@ from app.utils.utilitarios_global  import obter_texto
 from app.servicos.admin.servico_cardapio_admin import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
 from app.servicos.admin.servico_mesas_admin import cadastrar_mesa, carregar_mesas, remover_mesa, buscar_mesa_id
 from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
-from app.servicos.funcionarios.servico_pedidos_funcionario import criar_pedido, editar_pedido
+from app.servicos.funcionarios.servico_pedidos_funcionario import criar_pedido, editar_pedido, remover_pedido
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
@@ -42,6 +42,9 @@ def menu_funcionario():
 
     elif opcao == 2:
         editar_pedido(cardapio,pedidos,mesas)
+    
+    elif opcao == 3:
+        remover_pedido(pedidos)
 
     elif opcao == 0:
         print('\n👋 Até logo! \n')    

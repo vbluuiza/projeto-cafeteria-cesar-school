@@ -125,3 +125,29 @@ def editar_pedido(cardapio, pedidos, mesas):
 
     salvar_pedidos(pedidos_dados)
     print("\n✅ Pedido atualizado com sucesso!")
+
+def remover_pedido(pedidos: dict):
+    limpar_console()
+    print("========== ❌ REMOVER PEDIDO ❌ ==========\n")
+
+    obter_mesa = obter_int("🔢 Digite o número da mesa: ")
+
+    for pedido in pedidos["pedidos"]:
+        if pedido["mesa"] == obter_mesa:
+            print("\n✅ Mesa encontrada!")
+            print("-" * 40)
+            print(f"🍽️  Itens: {', '.join(pedido['itens']) if pedido['itens'] else 'Nenhum item'}")
+            print(f"📝 Observações: {pedido.get('observacoes', 'Nenhuma')}")
+            print(f"📌 Status: {pedido['status'] if pedido['status'] else 'Sem status'}")
+            print("-" * 40)
+
+            cancelar_pedido = obter_texto("\n❓ Deseja mesmo cancelar o pedido? (s/n): ").lower()
+            if cancelar_pedido == "s":
+                pedidos["pedidos"].remove(pedido)
+                salvar_pedidos(pedidos)
+                print(f"\n✅ Pedido da mesa {obter_mesa} removido com sucesso!")
+            else:
+                print("\nℹ️  O pedido não foi cancelado.")
+            break
+    else:
+        print(f"\n⚠️  Nenhum pedido encontrado para a mesa {obter_mesa}.")
