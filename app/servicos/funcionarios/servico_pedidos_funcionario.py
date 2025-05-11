@@ -9,54 +9,71 @@ from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_texto, obter_int
 from app.utils.utilitarios_global import STATUS_PEDIDO
 
-def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
+def criar_pedido(cardapio: dict, pedidos: dict, mesas: dict):
     limpar_console()
 
     total_de_mesas = mesas['total_de_mesas']
-
     mesa_em_atendimento = obter_int("Mesa atendida: ")
 
     if mesa_em_atendimento > total_de_mesas:
-        print(f"Mesa inexistente, mesas disponiveis: 1 até {total_de_mesas}")
+        print(f"❌ Mesa inexistente. Mesas disponíveis: 1 até {total_de_mesas}")
+        return
 
     exibir_cardapio()
-
     print("========== ☕ PEDIDO NOVO ☕ ==========")
-    print("\nFavor, escolha os itens que desejar!")
+    print("\n📌 Favor, escolha os itens que desejar!")
 
-    itens_cardapio_nome = [item['nome'] for categoria in cardapio.values() for subcategoria in categoria.values() for item in subcategoria]
+    itens_cardapio = [
+        {'nome': item['nome'], 'preco': item['preco']}
+        for categoria in cardapio.values()
+        for subcategoria in categoria.values()
+        for item in subcategoria
+    ]
 
     itens_pedidos = []
+
     while True:
+        pedido = obter_texto("\n🍽️  O que gostaria de pedir: ")
 
-        pedido = obter_texto("\nO que gostaria de pedir: ")
+        item_encontrado = next((item for item in itens_cardapio if item['nome'] == pedido), None)
 
-        if pedido not in itens_cardapio_nome:
-            print("\nItem não encontrado.")
+        if item_encontrado:
+            itens_pedidos.append(item_encontrado)
+            print(f"\n✅ '{item_encontrado['nome']}' adicionado com sucesso!")
+        else:
+            print(f"\n❌ Item '{pedido}' não encontrado no cardápio.")
             continue
 
-        itens_pedidos.append(pedido)
-        print("\nItem adicionado com sucesso!")
+        adicionar_item = obter_texto("\n➕ Gostaria de pedir mais alguma coisa? (S/N): ").lower()
+        if adicionar_item == 'n':
+            break
 
-        adicionar_item = obter_texto("\nGostaria de pedir mais alguma coisa? (s/n): ").lower()
+    if not itens_pedidos:
+        print("\n⚠️ Nenhum item válido foi adicionado. Pedido cancelado.")
+        return
 
-        if adicionar_item != 'n':
-            continue
-        observacao = obter_texto('Gostaria de adicionar alguma observacao?: ')
-        if observacao == '':
-            observacao = 'Nenhuma'
+    observacao = obter_texto('\n🗒️  Gostaria de adicionar alguma observação?: ')
+    if observacao == '':
+        observacao = 'Nenhuma'
 
-        pedido = {
-            'mesa': mesa_em_atendimento,
-            'itens': itens_pedidos,
-            'observacoes': observacao,
-            'status': STATUS_PEDIDO[0]
-        }
+    novo_pedido = {
+        'mesa': mesa_em_atendimento,
+        'itens': itens_pedidos,
+        'observacoes': observacao,
+        'status': STATUS_PEDIDO[0]
+    }
 
-        pedidos['mesas'].append(pedido)
-        salvar_pedidos(pedidos)
+    pedidos['pedidos'].append(novo_pedido)
+    salvar_pedidos(pedidos)
 
-        break
+    print("\n🎉 Pedido realizado com sucesso!")
+    print(f"📍 Mesa: {mesa_em_atendimento}")
+    print("🧾 Itens pedidos:")
+    for item in itens_pedidos:
+        print(f" ➤   {item['nome']}   |     ➤  R${item['preco']:.2f}")
+    print(f"💬 Observações: {observacao}")
+    print(f"📦 Status inicial: {STATUS_PEDIDO[0]}")
+
 
 def editar_pedido(cardapio, pedidos, mesas):
 
