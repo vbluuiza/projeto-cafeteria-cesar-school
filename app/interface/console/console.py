@@ -2,6 +2,7 @@ from app.utils.utilitarios_global import limpar_console, obter_texto
 
 from app.servicos.admin.servico_cardapio import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
 from app.servicos.admin.servico_mesas import cadastrar_mesa, listar_mesas, remover_mesa, buscar_mesa_id
+from app.servicos.admin.servico_pedidos import listar_pedidos
 from app.servicos.utilitarios_servicos.utils import exibir_cardapio
 from app.servicos.funcionarios.servico_pedidos import criar_pedido, editar_pedido, remover_pedido
 
@@ -71,7 +72,9 @@ def menu_administrativo():
     if opcao == 1:
         menu_administrativo_mesa()
     elif opcao == 2:
-        menu_administrativo_cardapio()            
+        menu_administrativo_cardapio()     
+    elif opcao == 3:
+        menu_administrativo_pedidos()       
     elif opcao == 0:
         print('\n👋 Até logo!\n') 
 
@@ -158,3 +161,29 @@ def menu_administrativo_cardapio():
             buscar_item_cardapio()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
+
+def menu_administrativo_pedidos():
+
+    pedidos = carregar_pedidos()
+    cardapio = carregar_cardapio()
+    mesas = carregar_mesas()
+
+    limpar_console()
+    print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
+    print('=' * 50)
+    print('1️⃣  Listar todos os pedidos')
+    print('0️⃣  Sair')
+    print('=' * 50)
+
+    while True:
+        try:
+            opcao = int(input('👉 Escolha uma opção: '))
+            if opcao in (0, 1):
+                break
+            else:
+                print('❌ Opção inválida! Digite um número entre (0, 1)')
+        except ValueError:
+            print('❌ Opção inválida! Digite um número.')
+
+    if opcao == 1:
+        listar_pedidos(cardapio,pedidos,mesas)

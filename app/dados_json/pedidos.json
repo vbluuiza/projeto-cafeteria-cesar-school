@@ -1,4 +1,16 @@
 {
     "total_pedidos": 30,
-    "pedidos": []
+    "pedidos": [
+        {
+            "mesa": 5,
+            "itens": [
+                "Mocha",
+                "Cappuccino",
+                "Brownie",
+                "Petit Gâteau"
+            ],
+            "observacoes": "Pedido foda",
+            "status": "Em preparo"
+        }
+    ]
 }
