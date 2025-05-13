@@ -11,50 +11,64 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
 
     total_de_mesas = mesas['total_de_mesas']
-
-    mesa_em_atendimento = obter_int("Mesa atendida: ")
+    mesa_em_atendimento = obter_int("🔢 Informe o número da mesa atendida: ")
 
     if mesa_em_atendimento > total_de_mesas:
-        print(f"Mesa inexistente, mesas disponiveis: 1 até {total_de_mesas}")
+        print(f"❌ Mesa inexistente. Mesas disponíveis: de 1 até {total_de_mesas}.")
+        return
 
     exibir_cardapio()
 
     print("========== ☕ PEDIDO NOVO ☕ ==========")
-    print("\nFavor, escolha os itens que desejar!")
+    print("📌 Escolha os itens que deseja adicionar ao pedido:")
 
-    itens_cardapio_nome = [item['nome'] for categoria in cardapio.values() for subcategoria in categoria.values() for item in subcategoria]
+    itens_cardapio_nome = [item['nome'] 
+                           for categoria in cardapio.values() 
+                           for subcategoria in categoria.values() 
+                           for item in subcategoria]
 
     itens_pedidos = []
     while True:
-
-        pedido = obter_texto("\nO que gostaria de pedir: ")
+        pedido = obter_texto("\n🍽️  Digite o nome do item: ")
 
         if pedido not in itens_cardapio_nome:
-            print("\nItem não encontrado.")
+            print("❌ Item não encontrado no cardápio. Tente novamente.")
             continue
 
         itens_pedidos.append(pedido)
-        print("\nItem adicionado com sucesso!")
+        print(f"✅ Item '{pedido}' adicionado com sucesso!")
 
-        adicionar_item = obter_texto("\nGostaria de pedir mais alguma coisa? (s/n): ").lower()
-
-        if adicionar_item != 'n':
+        
+        adicionar_item = obter_texto("\n➕ Deseja adicionar mais algum item? (s/n): ").lower()
+        if adicionar_item == 'n':
+            break
+        if adicionar_item == 's':
             continue
-        observacao = obter_texto('Gostaria de adicionar alguma observacao?: ')
-        if observacao == '':
-            observacao = 'Nenhuma'
+        
+    if not itens_pedidos:
+        print("\n⚠️ Nenhum item foi adicionado ao pedido. Cancelando operação.")
+        return
+    
+    observacao = obter_texto("\n🗒️ Deseja adicionar alguma observação ao pedido?: ")
+    if observacao == '':
+        observacao = 'Nenhuma'
 
-        pedido = {
-            'mesa': mesa_em_atendimento,
-            'itens': itens_pedidos,
-            'observacoes': observacao,
-            'status': STATUS_PEDIDO[0]
-        }
+    pedido = {
+        'mesa': mesa_em_atendimento,
+        'itens': itens_pedidos,
+        'observacoes': observacao,
+        'status': STATUS_PEDIDO[0]
+    }
 
-        pedidos['pedidos'].append(pedido)
-        salvar_pedidos(pedidos)
+    pedidos['pedidos'].append(pedido)
+    salvar_pedidos(pedidos)
 
-        break
+    print("\n🎉 Pedido registrado com sucesso!")
+    print(f"📍 Mesa: {mesa_em_atendimento}")
+    print("🧾 Itens do pedido:")
+    for item in itens_pedidos:
+        print(f"   ➤ {item}")
+    print(f"📦 Status inicial: {STATUS_PEDIDO[0]}")
 
 def editar_pedido(cardapio, pedidos, mesas):
     limpar_console()
@@ -62,41 +76,36 @@ def editar_pedido(cardapio, pedidos, mesas):
 
     print ("========== ☕ EDITAR PEDIDO ☕ ==========")
 
-    pedidos_dados = pedidos['mesas']
-    mesas_com_pedidos = [pedido["mesa"] for pedido in pedidos_dados]
-    
-    if not mesas_com_pedidos:
-        limpar_console()
-        print("❌ Não há mesas com pedidos ativos no momento.")
+    pedidos_dados = pedidos['pedidos']
+    if not pedidos_dados:
+        print("❌ Não há pedidos ativos no momento.")
         return
     
     print("\n📋 Mesas com pedidos ativos:")
-    for mesa in mesas_com_pedidos:
-        print(f"   ➤   Mesa {mesa}")
+    for pedido in pedidos_dados:
+        print(f"   ➤ Mesa {pedido['mesa']}")
     
-    while True:
-        mesa_selecionada = obter_int("\n🔢 Informe o número da mesa selecionada: ")
-        if mesa_selecionada in mesas_com_pedidos:
-            break
-        else:
-            print("⚠️ Mesa não encontrada com pedido ativo.")
-        
+    mesa_selecionada = obter_int("\n🔢 Informe o número da mesa selecionada: ")
     
-    pedido = next((pedido for pedido in pedidos_dados if pedido["mesa"] == mesa_selecionada), None)
-
+    pedido = next((pedido for pedido in pedidos_dados if pedido['mesa'] == mesa_selecionada), None)
+    
+    if not pedido:
+        print("⚠️ Mesa não encontrada com pedido ativo.")
+        return
+    
     print(f"\n📦 Pedido atual da mesa {mesa_selecionada}:")
     print("-" * 40)
     print(f"🍽️  Itens: {', '.join(pedido['itens'])}")
     print(f"📝 Observações: {pedido.get('observacoes', 'Nenhuma')}")
-    print(f"📌 Status: {pedido['status']}")
+    print(f"📌 Status: {pedido.get('status', 'Sem status')}")
     print("-" * 40)
 
     pedido_foi_editado = False
 
-    if obter_texto("\n✏️ Deseja editar os itens do pedido? (s/n): ").lower() == 's':
+    if obter_texto("\n✏️  Deseja editar os itens do pedido? (s/n): ").lower() == 's':
         itens_atualizados = []
-        print("\n🛒 Adicione novos itens ao pedido (digite 'sair' para finalizar):")
         
+        print("\n🛒 Adicione novos itens ao pedido (digite 'sair' para finalizar):")
         while True:
             item = obter_texto("➕ Novo item: ")
             if item.lower() == "sair":
@@ -110,15 +119,14 @@ def editar_pedido(cardapio, pedidos, mesas):
         else:
             print("⚠️ Nenhum item novo foi adicionado.")
 
-        if obter_texto("\n🗒️ Deseja editar a observação do pedido? (S/N): ").lower() == 's':
-            nova_observacao = obter_texto("💬 Digite a nova observação: ")
-        if nova_observacao == '':
-            nova_observacao = 'Nenhuma'
-        pedido["observacoes"] = nova_observacao
+    if obter_texto("\n🗒️  Deseja editar a observação do pedido? (S/N): ").lower() == 's':
+        observacao = obter_texto("\n🗒️  Escreva a nova observação do pedido: ")
+        if observacao == '':
+            observacao = 'Nenhuma'
+        pedido["observacoes"] = observacao
         print("✅ Observação atualizada com sucesso!")
         pedido_foi_editado = True
         
-
     if pedido_foi_editado:
         salvar_pedidos(pedidos)
         print(f"\n🎉 Pedido da mesa {mesa_selecionada} atualizado com sucesso!\n")
