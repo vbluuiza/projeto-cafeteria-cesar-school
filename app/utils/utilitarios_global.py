@@ -35,3 +35,26 @@ STATUS_PEDIDO = {
     3: 'Entregue',
     4: 'Cancelado'
 }
+
+def retorno_main():
+    from main import inicializar_cafeteria
+    print("\n" + "=" * 50)
+    print('1️⃣  Retonar')
+    print('0️⃣  Finalizar')
+    print("=" * 50)
+
+    while True:
+        try:
+            opcao = int(input('👉 Escolha uma opção: '))
+            if opcao in (0, 1):
+                break
+            else:
+                print('❌ Opção inválida! Digite um número entre (0, 1)')
+        except ValueError:
+                print('❌ Opção inválida! Digite um número.')
+
+    if opcao == 1:
+            inicializar_cafeteria()
+
+    elif opcao == 0:
+        print('\n👋 Até logo!\n')

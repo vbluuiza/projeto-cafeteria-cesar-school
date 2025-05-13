@@ -1,6 +1,6 @@
 import json
 from app.repositorios.repositorio_mesas import salvar_mesas
-from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_global import limpar_console, retorno_main
 from app.utils.utilitarios_global import obter_int
 from app.servicos.utilitarios_servicos.utils import STATUS_MESA
 
@@ -30,6 +30,8 @@ def cadastrar_mesa(mesas:dict):
     else:
         print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesas foram adicionadas com sucesso!')
 
+    retorno_main()
+
 def remover_mesa(mesas:dict):
 
     limpar_console()
@@ -48,6 +50,8 @@ def remover_mesa(mesas:dict):
     else:
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
 
+    retorno_main()
+
 def buscar_mesa_id(mesas:dict):
     
     limpar_console()
@@ -63,6 +67,8 @@ def buscar_mesa_id(mesas:dict):
             break
     else:
         print(f'\n❌ Mesa não encontrada. Verifique o ID e tente novamente.')
+    
+    retorno_main()
 
 def listar_mesas(mesas:dict):
     
@@ -74,3 +80,5 @@ def listar_mesas(mesas:dict):
         print(f"🪑 ID da Mesa: {mesa['id']}")
         print(f'📌 Status: {mesa['status']} ')
         print('-' * 50)
+
+    retorno_main()
