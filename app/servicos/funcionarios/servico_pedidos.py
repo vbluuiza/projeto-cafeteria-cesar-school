@@ -22,22 +22,24 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     print("========== ☕ PEDIDO NOVO ☕ ==========")
     print("📌 Escolha os itens que deseja adicionar ao pedido:")
 
-    itens_cardapio_nome = [item['nome'] 
-                           for categoria in cardapio.values() 
-                           for subcategoria in categoria.values() 
-                           for item in subcategoria]
+
+    itens_cardapio = {
+        item['nome']: item['preco']
+        for categoria in cardapio.values() for subcategoria in categoria.values() for item in subcategoria
+    }
 
     itens_pedidos = []
+    conta = []
     while True:
         pedido = obter_texto("\n🍽️  Digite o nome do item: ")
 
-        if pedido not in itens_cardapio_nome:
+        if pedido not in itens_cardapio:
             print("❌ Item não encontrado no cardápio. Tente novamente.")
             continue
 
         itens_pedidos.append(pedido)
+        conta.append(itens_cardapio[pedido])
         print(f"✅ Item '{pedido}' adicionado com sucesso!")
-
         
         adicionar_item = obter_texto("\n➕ Deseja adicionar mais algum item? (s/n): ").lower()
         if adicionar_item == 'n':
@@ -53,12 +55,17 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     if observacao == '':
         observacao = 'Nenhuma'
 
+    soma_conta = sum(conta)
+    conta_final = soma_conta
+
     pedido = {
         'mesa': mesa_em_atendimento,
         'itens': itens_pedidos,
+        'preco_total': conta_final,
         'observacoes': observacao,
         'status': STATUS_PEDIDO[0]
     }
+
 
     pedidos['pedidos'].append(pedido)
     salvar_pedidos(pedidos)
@@ -68,6 +75,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     print("🧾 Itens do pedido:")
     for item in itens_pedidos:
         print(f"   ➤ {item}")
+    print(f"Total: R${conta_final}")
     print(f"📦 Status inicial: {STATUS_PEDIDO[0]}")
 
 def editar_pedido(cardapio, pedidos, mesas):
@@ -158,3 +166,4 @@ def remover_pedido(pedidos: dict):
             break
     else:
         print(f"\n⚠️  Nenhum pedido encontrado para a mesa {obter_mesa}.")
+
