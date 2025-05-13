@@ -1,6 +1,6 @@
 import json
 
-CAMINHO = 'app/dados/dados_json/cardapio.json'
+CAMINHO = 'app/dados_json/cardapio.json'
 
 def carregar_cardapio():
     try:

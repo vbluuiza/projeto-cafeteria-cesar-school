@@ -1,6 +1,6 @@
 import json
 
-CAMINHO = 'app/dados/dados_json/mesas.json'
+CAMINHO = 'app/dados_json/mesas.json'
 
 def carregar_mesas():
     try:

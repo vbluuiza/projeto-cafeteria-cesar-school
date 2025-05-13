@@ -1,6 +1,6 @@
 import json
 
-CAMINHO = 'app/dados/dados_json/pedidos.json'
+CAMINHO = 'app/dados_json/pedidos.json'
 
 def carregar_pedidos():
     try:

@@ -1,10 +1,9 @@
-from app.utils.utilitarios_global import limpar_console
-from app.utils.utilitarios_global  import obter_texto
+from app.utils.utilitarios_global import limpar_console, obter_texto
 
-from app.servicos.admin.servico_cardapio_admin import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
-from app.servicos.admin.servico_mesas_admin import cadastrar_mesa, carregar_mesas, remover_mesa, buscar_mesa_id
-from app.servicos.cliente.servico_cardapio_cliente import exibir_cardapio
-from app.servicos.funcionarios.servico_pedidos_funcionario import criar_pedido, editar_pedido, remover_pedido
+from app.servicos.admin.servico_cardapio import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
+from app.servicos.admin.servico_mesas import cadastrar_mesa, remover_mesa, buscar_mesa_id
+from app.servicos.utilitarios_servicos.utils import exibir_cardapio
+from app.servicos.funcionarios.servico_pedidos import criar_pedido, editar_pedido, remover_pedido
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
@@ -154,34 +153,3 @@ def menu_administrativo_cardapio():
             buscar_item_cardapio()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
-
-def menu_principal():
-    limpar_console()
-    print('\n' + '☕🍩 BEM-VINDO AO CAFÉ VOYAGE! ☕🍩'.center(50, '='))
-    print('=' * 50)
-    print('1️⃣  Ver Cardápio')
-    print('0️⃣  Sair')
-    print('=' * 50)
-
-    cardapio = carregar_cardapio()
-
-    while True:
-        try:
-            opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1):
-                break
-            else:
-                print('❌ Opção inválida! Digite um número entre (0, 1)')
-        except ValueError:
-            print('❌ Opção inválida! Digite um número.')
-    
-    if opcao == 1:
-        exibir_cardapio()
-        fazer_pedido = obter_texto("Gostaria de pedir algo? (s/n): ").lower()
-        if fazer_pedido not in ['s', 'n']:
-            return
-        
-        if fazer_pedido != 's':
-            return
-        criar_pedido(cardapio)
-        
