@@ -29,8 +29,9 @@ def obter_float(msg):
 
 
 STATUS_PEDIDO = {
-    0: 'Em preparo',
-    1: 'Pronto',
-    2: 'Entregue',
-    3: 'Cancelado'
+    0: 'Pedido Aprovado',
+    1: 'Em preparo',
+    2: 'Pronto',
+    3: 'Entregue',
+    4: 'Cancelado'
 }
