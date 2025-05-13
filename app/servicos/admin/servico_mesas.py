@@ -63,3 +63,14 @@ def buscar_mesa_id(mesas:dict):
             break
     else:
         print(f'\n❌ Mesa não encontrada. Verifique o ID e tente novamente.')
+
+def listar_mesas(mesas:dict):
+    
+    limpar_console()
+    print('\n🌟 📝 LISTANDO MESAS 🌟')
+    print('-' * 50)
+    
+    for mesa in mesas['lista_de_mesas']:
+        print(f"🪑 ID da Mesa: {mesa['id']}")
+        print(f'📌 Status: {mesa['status']} ')
+        print('-' * 50)
