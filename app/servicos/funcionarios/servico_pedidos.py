@@ -9,18 +9,25 @@ from app.utils.utilitarios_global import STATUS_PEDIDO
 
 def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
+    while True:
+        total_de_mesas = mesas['total_de_mesas']
+        mesa_em_atendimento = obter_int("🔢 Informe o número da mesa atendida: ")
 
-    total_de_mesas = mesas['total_de_mesas']
-    mesa_em_atendimento = obter_int("🔢 Informe o número da mesa atendida: ")
+        if mesa_em_atendimento > total_de_mesas:
+            print(f"❌ Mesa inexistente. Mesas disponíveis: de 1 até {total_de_mesas}.")
+            return
 
-    if mesa_em_atendimento > total_de_mesas:
-        print(f"❌ Mesa inexistente. Mesas disponíveis: de 1 até {total_de_mesas}.")
-        return
+        mesas_indisponiveis = [pedido['mesa'] for pedido in pedidos['pedidos']]
+        if mesa_em_atendimento in mesas_indisponiveis:
+            print(f'Mesa {mesa_em_atendimento} ocupada. Escolha outra mesa.\n')
+            continue
+        else: 
+            break
+            
+    # exibir_cardapio()
 
-    exibir_cardapio()
-
-    print("========== ☕ PEDIDO NOVO ☕ ==========")
-    print("📌 Escolha os itens que deseja adicionar ao pedido:")
+    print("\n========== ☕ PEDIDO NOVO ☕ ==========")
+    print("+📌 Escolha os itens que deseja adicionar ao pedido:")
 
 
     itens_cardapio = {
