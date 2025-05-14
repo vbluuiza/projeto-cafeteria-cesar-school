@@ -3,7 +3,7 @@ import json
 from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
 from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
 from app.servicos.utilitarios_servicos.utils import exibir_cardapio
-from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_global import limpar_console, retorno_main
 from app.utils.utilitarios_global import obter_texto, obter_int
 from app.utils.utilitarios_global import STATUS_PEDIDO
 from app.utilitarios.utils import STATUS_MESA
@@ -94,6 +94,8 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     print(f"Total: R${conta_final}")
     print(f"📦 Status inicial: {STATUS_PEDIDO[0]}")
 
+    retorno_main()
+
 def editar_pedido(cardapio, pedidos, mesas):
     limpar_console()
     exibir_cardapio()
@@ -156,6 +158,8 @@ def editar_pedido(cardapio, pedidos, mesas):
         print(f"\n🎉 Pedido da mesa {mesa_selecionada} atualizado com sucesso!\n")
     else:
         print("\nℹ️ Nenhuma alteração foi feita no pedido.")
+    
+    retorno_main()
 
 def remover_pedido(pedidos: dict):
     limpar_console()
@@ -183,3 +187,4 @@ def remover_pedido(pedidos: dict):
     else:
         print(f"\n⚠️  Nenhum pedido encontrado para a mesa {obter_mesa}.")
 
+    retorno_main()

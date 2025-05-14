@@ -58,3 +58,8 @@ def retorno_main():
 
     elif opcao == 0:
         print('\n👋 Até logo!\n')
+
+def retornar_para_menu():
+    from main import inicializar_cafeteria
+
+    inicializar_cafeteria()

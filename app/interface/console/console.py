@@ -1,4 +1,4 @@
-from app.utils.utilitarios_global import limpar_console, obter_texto
+from app.utils.utilitarios_global import limpar_console, obter_texto, retornar_para_menu
 
 from app.servicos.admin.servico_cardapio import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
 from app.servicos.admin.servico_mesas import cadastrar_mesa, listar_mesas, remover_mesa, buscar_mesa_id
@@ -23,16 +23,17 @@ def menu_funcionario():
     print('1️⃣ Fazer pedido')
     print('2️⃣ Editar pedido')
     print('3️⃣ Cancelar pedido')
+    print('4️⃣ Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
 
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3):
+            if opcao in (0, 1, 2, 3, 4):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
             
@@ -46,6 +47,9 @@ def menu_funcionario():
     elif opcao == 3:
         remover_pedido(pedidos)
 
+    elif opcao == 4:
+        retornar_para_menu()
+
     elif opcao == 0:
         print('\n👋 Até logo! \n')    
 
@@ -56,16 +60,17 @@ def menu_administrativo():
     print('1️⃣  Opções de gerenciamento de mesa')
     print('2️⃣  Opções de gerenciamento de cardápio')
     print('3️⃣  Opções de gerenciamento de pedidos')
+    print('4️⃣  Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
     
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3,):
+            if opcao in (0, 1, 2, 3, 4):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
             
@@ -74,7 +79,9 @@ def menu_administrativo():
     elif opcao == 2:
         menu_administrativo_cardapio()     
     elif opcao == 3:
-        menu_administrativo_pedidos()       
+        menu_administrativo_pedidos()
+    elif opcao == 4:
+        retornar_para_menu()       
     elif opcao == 0:
         print('\n👋 Até logo!\n') 
 
@@ -86,6 +93,7 @@ def menu_administrativo_mesa():
     print('2️⃣ Remover Mesa')
     print('3️⃣ Buscar Mesa')
     print('4️⃣ Listar Mesas')
+    print('5️⃣  Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
     
@@ -94,10 +102,10 @@ def menu_administrativo_mesa():
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3, 4):
+            if opcao in (0, 1, 2, 3, 4, 5):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
             
@@ -116,6 +124,9 @@ def menu_administrativo_mesa():
     elif opcao == 4:
         if mesas:
             listar_mesas(mesas)
+    
+    elif opcao == 5:
+        menu_administrativo()
             
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n')  
@@ -129,6 +140,7 @@ def menu_administrativo_cardapio():
     print('3️⃣  Remover Item do Cardápio')
     print('4️⃣  Ver Itens do Cardápio')
     print('5️⃣  Buscar item cardapio')
+    print('6️⃣  Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
 
@@ -137,10 +149,10 @@ def menu_administrativo_cardapio():
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1, 2, 3, 4, 5):
+            if opcao in (0, 1, 2, 3, 4, 5, 6):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5,)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2, 3, 4, 5, 6)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
 
@@ -159,6 +171,8 @@ def menu_administrativo_cardapio():
     elif opcao == 5:
         if cardapio:
             buscar_item_cardapio()
+    elif opcao == 6:
+        menu_administrativo()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
 
@@ -172,18 +186,21 @@ def menu_administrativo_pedidos():
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
     print('=' * 50)
     print('1️⃣  Listar todos os pedidos')
+    print('2️⃣  Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
 
     while True:
         try:
             opcao = int(input('👉 Escolha uma opção: '))
-            if opcao in (0, 1):
+            if opcao in (0, 1, 2):
                 break
             else:
-                print('❌ Opção inválida! Digite um número entre (0, 1)')
+                print('❌ Opção inválida! Digite um número entre (0, 1, 2)')
         except ValueError:
             print('❌ Opção inválida! Digite um número.')
 
     if opcao == 1:
         listar_pedidos(cardapio,pedidos,mesas)
+    elif opcao == 2:
+        menu_administrativo()
