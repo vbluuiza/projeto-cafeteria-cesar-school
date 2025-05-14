@@ -1,10 +1,12 @@
 import json
 
 from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
+from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
 from app.servicos.utilitarios_servicos.utils import exibir_cardapio
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_texto, obter_int
 from app.utils.utilitarios_global import STATUS_PEDIDO
+from app.utilitarios.utils import STATUS_MESA
 
 
 def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
@@ -24,7 +26,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
         else: 
             break
             
-    # exibir_cardapio()
+    exibir_cardapio()
 
     print("\n========== ☕ PEDIDO NOVO ☕ ==========")
     print("+📌 Escolha os itens que deseja adicionar ao pedido:")
@@ -72,11 +74,18 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
         'observacoes': observacao,
         'status': STATUS_PEDIDO[0]
     }
-
-
+    
+    for mesa in mesas['lista_de_mesas']:
+        if mesa['id'] == mesa_em_atendimento:
+            print(f'MESA NO ID{mesa['id']} | MESAS: {mesa}')
+            mesa['status'] = STATUS_MESA[1]
+            salvar_mesas(mesas)
+        
     pedidos['pedidos'].append(pedido)
     salvar_pedidos(pedidos)
-
+    
+    limpar_console()
+    
     print("\n🎉 Pedido registrado com sucesso!")
     print(f"📍 Mesa: {mesa_em_atendimento}")
     print("🧾 Itens do pedido:")
