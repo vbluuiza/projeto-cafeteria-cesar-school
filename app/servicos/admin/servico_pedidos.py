@@ -9,7 +9,7 @@ def listar_pedidos(cardapio, pedidos, mesas):
     pedidos_dados = pedidos['pedidos']
     if not pedidos_dados:
         print("❌ Não há pedidos ativos no momento.")
-        return
+        retorno_main()
     
     print("📋 Mesas com pedidos ativos:")
     for pedido in pedidos_dados:
@@ -20,4 +20,4 @@ def listar_pedidos(cardapio, pedidos, mesas):
         print(f"📌 Status: {pedido.get('status', 'Sem status')}")
         print("-" * 40)
         
-    retorno_main()
+        retorno_main()
