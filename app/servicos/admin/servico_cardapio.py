@@ -1,8 +1,10 @@
 import json
+
 from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_cardapio
+
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_float, obter_texto
-from app.servicos.utilitarios_servicos.utils import gerar_proximo_id, obter_categoria_e_subcategoria_valida
+from app.utils.utilitarios_global import gerar_proximo_id, obter_categoria_e_subcategoria_valida
 
 def cadastrar_item(cardapio:dict):
     limpar_console()

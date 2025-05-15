@@ -1,23 +1,4 @@
 {
-    "total_pedidos": 30,
-    "pedidos": [
-        {
-            "mesa": 1,
-            "itens": [
-                "Misto Quente"
-            ],
-            "preco_total": 9.0,
-            "observacoes": "n",
-            "status": "Pedido Aprovado"
-        },
-        {
-            "mesa": 2,
-            "itens": [
-                "Misto Quente"
-            ],
-            "preco_total": 9.0,
-            "observacoes": "n",
-            "status": "Pedido Aprovado"
-        }
-    ]
+    "total_pedidos": 0,
+    "pedidos": []
 }

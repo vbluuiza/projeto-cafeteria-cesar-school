@@ -3,8 +3,9 @@ from app.utils.utilitarios_global import limpar_console, obter_texto, retornar_p
 from app.servicos.admin.servico_cardapio import cadastrar_item, remover_item_cardapio, editar_item_cardapio, buscar_item_cardapio
 from app.servicos.admin.servico_mesas import cadastrar_mesa, listar_mesas, remover_mesa, buscar_mesa_id
 from app.servicos.admin.servico_pedidos import listar_pedidos
-from app.servicos.utilitarios_servicos.utils import exibir_cardapio
 from app.servicos.funcionarios.servico_pedidos import criar_pedido, editar_pedido, remover_pedido
+
+from app.utils.utilitarios_global import exibir_cardapio
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
@@ -20,10 +21,10 @@ def menu_funcionario():
     limpar_console()
     print('\n' + '🔧⚙️ MENU FUNCIONÁRIO ⚙️🔧'.center(50, '='))
     print('=' * 50)
-    print('1️⃣ Fazer pedido')
-    print('2️⃣ Editar pedido')
-    print('3️⃣ Cancelar pedido')
-    print('4️⃣ Voltar')
+    print('1️⃣  Fazer pedido')
+    print('2️⃣  Editar pedido')
+    print('3️⃣  Cancelar pedido')
+    print('4️⃣  Voltar')
     print('0️⃣  Sair')
     print('=' * 50)
 

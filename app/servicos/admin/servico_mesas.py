@@ -1,8 +1,8 @@
 import json
+
 from app.repositorios.repositorio_mesas import salvar_mesas
-from app.utils.utilitarios_global import limpar_console, retorno_main
-from app.utils.utilitarios_global import obter_int
-from app.servicos.utilitarios_servicos.utils import STATUS_MESA
+
+from app.utils.utilitarios_global import limpar_console, retorno_main, obter_int, STATUS_MESA
 
 
 

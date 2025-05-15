@@ -2,11 +2,12 @@ import json
 
 from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
 from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
-from app.servicos.utilitarios_servicos.utils import exibir_cardapio
-from app.utils.utilitarios_global import limpar_console, retorno_main
+
+from app.utils.utilitarios_global import limpar_console
+
+from app.utils.utilitarios_global import exibir_cardapio, retorno_main
 from app.utils.utilitarios_global import obter_texto, obter_int
-from app.utils.utilitarios_global import STATUS_PEDIDO
-from app.utilitarios.utils import STATUS_MESA
+from app.utils.utilitarios_global import STATUS_PEDIDO, STATUS_MESA
 
 
 def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):

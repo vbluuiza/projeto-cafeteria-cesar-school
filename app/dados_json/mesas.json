@@ -3,11 +3,11 @@
     "lista_de_mesas": [
         {
             "id": 1,
-            "status": "Ocupada"
+            "status": "Disponível"
         },
         {
             "id": 2,
-            "status": "Ocupada"
+            "status": "Disponível"
         },
         {
             "id": 3,
