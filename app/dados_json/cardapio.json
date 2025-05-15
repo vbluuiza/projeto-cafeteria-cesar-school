@@ -114,40 +114,16 @@
         "sanduiches": [
             {
                 "id": 10,
-                "nome": "Monte seu Sanduíche",
-                "descricao": "Escolha seus ingredientes preferidos e monte um lanche personalizado, fresco e cheio de sabor.",
-                "ingredientes": [
-                    {
-                        "ingrediente": "Pão",
-                        "opcoes": [
-                            "Baguete",
-                            "Francês"
-                        ]
-                    },
-                    {
-                        "ingrediente": "Proteína",
-                        "opcoes": [
-                            "Frango",
-                            "Carne"
-                        ]
-                    },
-                    {
-                        "ingrediente": "Verduras",
-                        "opcoes": [
-                            "Tomate",
-                            "Cebola",
-                            "Milho",
-                            "Alface"
-                        ]
-                    },
-                    {
-                        "ingrediente": "Molho",
-                        "opcoes": [
-                            "Branco",
-                            "Barbecue"
-                        ]
-                    }
-                ],
+                "nome": "Sanduíche de Frango ",
+                "descricao": "Pão artesanal recheado com frango desfiado, maionese temperada, alface crocante e tomate fresco. Uma combinação leve, saborosa e perfeita para qualquer hora do dia.",
+                "ingredientes": ["Pão artesanal",
+                                "Frango desfiado",
+                                "Maionese temperada",
+                                "Alface",
+                                "Tomate",
+                                "Sal",
+                                "Pimenta-do-reino"
+                            ],
                 "preco": 18.5,
                 "categoria": "Sanduíches"
             },
