@@ -3,18 +3,20 @@ import json
 from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
 from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
 
-from app.utils.utilitarios_global import limpar_console
+from app.utils.utilitarios_cardapio import exibir_cardapio
 
-from app.utils.utilitarios_global import exibir_cardapio, retorno_main
+from app.utils.utilitarios_global import limpar_console, retorno_main
+
 from app.utils.utilitarios_global import obter_texto, obter_int
 from app.utils.utilitarios_global import STATUS_PEDIDO, STATUS_MESA
 
 
 def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
     limpar_console()
+    
     while True:
         total_de_mesas = mesas['total_de_mesas']
-        mesa_em_atendimento = obter_int("🔢 Informe o número da mesa atendida: ")
+        mesa_em_atendimento = obter_int("🔢 Informe o número da mesa atendida: ", 'O número da mesa não pode ser negativo. Tente novamente.')
 
         if mesa_em_atendimento > total_de_mesas:
             print(f"❌ Mesa inexistente. Mesas disponíveis: de 1 até {total_de_mesas}.")
@@ -99,6 +101,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
 
 def editar_pedido(cardapio, pedidos, mesas):
     limpar_console()
+    
     exibir_cardapio()
 
     print ("========== ☕ EDITAR PEDIDO ☕ ==========")
@@ -112,7 +115,7 @@ def editar_pedido(cardapio, pedidos, mesas):
     for pedido in pedidos_dados:
         print(f"   ➤ Mesa {pedido['mesa']}")
     
-    mesa_selecionada = obter_int("\n🔢 Informe o número da mesa selecionada: ")
+    mesa_selecionada = obter_int("\n🔢 Informe o número da mesa selecionada: ", '⚠️ O número da mesa não pode ser negativo. Tente novamente.')
     
     pedido = next((pedido for pedido in pedidos_dados if pedido['mesa'] == mesa_selecionada), None)
     
@@ -166,7 +169,7 @@ def remover_pedido(pedidos: dict):
     limpar_console()
     print("========== ❌ REMOVER PEDIDO ❌ ==========\n")
 
-    obter_mesa = obter_int("🔢 Digite o número da mesa: ")
+    obter_mesa = obter_int("🔢 Digite o número da mesa: ", '⚠️ O número da mesa não pode ser negativo. Tente novamente.')
 
     for pedido in pedidos["pedidos"]:
         if pedido["mesa"] == obter_mesa:

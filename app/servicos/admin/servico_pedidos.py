@@ -2,6 +2,7 @@ from app.utils.utilitarios_global import limpar_console, retorno_main
 
 def listar_pedidos(cardapio, pedidos, mesas):
     limpar_console()
+    
     print('\n' + ' LISTA DOS PEDIDOS '.center(50, '='))
     print("")
 

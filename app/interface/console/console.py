@@ -5,7 +5,7 @@ from app.servicos.admin.servico_mesas import cadastrar_mesa, listar_mesas, remov
 from app.servicos.admin.servico_pedidos import listar_pedidos
 from app.servicos.funcionarios.servico_pedidos import criar_pedido, editar_pedido, remover_pedido
 
-from app.utils.utilitarios_global import exibir_cardapio
+from app.utils.utilitarios_cardapio import exibir_cardapio
 
 from app.repositorios.repositorio_cardapio import carregar_cardapio
 from app.repositorios.repositorio_mesas import carregar_mesas
@@ -171,7 +171,7 @@ def menu_administrativo_cardapio():
             exibir_cardapio()
     elif opcao == 5:
         if cardapio:
-            buscar_item_cardapio()
+            buscar_item_cardapio(cardapio)
     elif opcao == 6:
         menu_administrativo()
     elif opcao == 0:

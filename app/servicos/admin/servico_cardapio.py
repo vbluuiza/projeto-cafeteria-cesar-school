@@ -4,11 +4,13 @@ from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_card
 
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_float, obter_texto
-from app.utils.utilitarios_global import gerar_proximo_id, obter_categoria_e_subcategoria_valida
+
+from app.utils.utilitarios_cardapio import gerar_proximo_id, obter_categoria_e_subcategoria_valida
 
 def cadastrar_item(cardapio:dict):
     limpar_console()
-    print('\n🌟 📝 Cadastro de Novo Item no Cardápio 🌟')
+    
+    print('\n🌟 📝 CADASTRO DE NOVO ITEM NO CARDÁPIO 🌟')
     print('-' * 50)
 
     categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
@@ -38,6 +40,7 @@ def cadastrar_item(cardapio:dict):
         
 def remover_item_cardapio(cardapio:dict):
     limpar_console()
+    
     print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
     print('-' * 50)
     
@@ -59,6 +62,7 @@ def remover_item_cardapio(cardapio:dict):
 
 def editar_item_cardapio(cardapio:dict):
     limpar_console()
+    
     print('\n' + '🌟📝 EDITAR ITEM NO CARDÁPIO 📝🌟'.center(46, '─'))
     print('-' * 50)
     
@@ -97,10 +101,9 @@ def editar_item_cardapio(cardapio:dict):
     if not item_encontrado:
         print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
            
-def buscar_item_cardapio():
-    cardapio = carregar_cardapio()
-    
+def buscar_item_cardapio(cardapio:dict):
     limpar_console()
+    
     print('\n🔍 📋 BUSCAR ITEM DO CARDÁPIO 📋 🔍')
     print('-' * 50)
 

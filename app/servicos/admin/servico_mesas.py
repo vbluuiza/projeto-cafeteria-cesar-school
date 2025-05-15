@@ -4,14 +4,13 @@ from app.repositorios.repositorio_mesas import salvar_mesas
 
 from app.utils.utilitarios_global import limpar_console, retorno_main, obter_int, STATUS_MESA
 
-
-
 def cadastrar_mesa(mesas:dict):
-    
     limpar_console()
+    
     print('\n🌟 📝 Cadastro de nova mesa 🌟')
     print('-' * 50)
-    quantia_de_mesas_a_adicionar = obter_int('Quantas mesas serão adicionadas: ')
+    
+    quantia_de_mesas_a_adicionar = obter_int('Quantas mesas serão adicionadas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
     
     for i in range(quantia_de_mesas_a_adicionar):
         
@@ -25,7 +24,7 @@ def cadastrar_mesa(mesas:dict):
         
     salvar_mesas(mesas)
     
-    if(quantia_de_mesas_a_adicionar == 1):
+    if quantia_de_mesas_a_adicionar == 1:
         print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesa foi adicionada com sucesso!')
     else:
         print(f'\n✅ "{quantia_de_mesas_a_adicionar} Mesas foram adicionadas com sucesso!')
@@ -33,11 +32,12 @@ def cadastrar_mesa(mesas:dict):
     retorno_main()
 
 def remover_mesa(mesas:dict):
-
     limpar_console()
+    
     print('\n🌟 📝 REMOVER MESAS 🌟')
     print('-' * 50)
-    quantia_de_mesas_a_remover = obter_int('Quantas mesas serão removidas: ')
+    
+    quantia_de_mesas_a_remover = obter_int('Quantas mesas serão removidas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
     
     for i in range(quantia_de_mesas_a_remover):
         mesas['lista_de_mesas'].pop()
@@ -45,7 +45,7 @@ def remover_mesa(mesas:dict):
 
     salvar_mesas(mesas)
     
-    if(quantia_de_mesas_a_remover == 1):
+    if quantia_de_mesas_a_remover == 1:
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesa foi removida com sucesso!')
     else:
         print(f'\n✅ "{quantia_de_mesas_a_remover} Mesas foram removidas com sucesso!')
@@ -53,12 +53,12 @@ def remover_mesa(mesas:dict):
     retorno_main()
 
 def buscar_mesa_id(mesas:dict):
-    
     limpar_console()
+    
     print('\n🔍 📋 BUSCAR MESA POR ID 📋 🔍')
     print('-' * 50)
 
-    buscar_mesa = obter_int("🔢 Informe o ID da mesa que deseja buscar: ")
+    buscar_mesa = obter_int("🔢 Informe o ID da mesa que deseja buscar: ", '⚠️ O ID não pode ser negativo. Tente novamente.')
     for mesa in mesas['lista_de_mesas']:
         if mesa['id'] ==  buscar_mesa:
             print(f"\n✅ Mesa encontrada!")
@@ -71,8 +71,8 @@ def buscar_mesa_id(mesas:dict):
     retorno_main()
 
 def listar_mesas(mesas:dict):
-    
     limpar_console()
+    
     print('\n🌟 📝 LISTANDO MESAS 🌟')
     print('-' * 50)
     
