@@ -1,5 +1,8 @@
 # ☕ Sistema de Gestão para Cafeteria
 
+📌 **Versão:** 1.0  
+🗓️ **Última atualização:** Maio de 2025  
+
 Um sistema desenvolvido em Python com o objetivo de gerenciar as operações internas de uma cafeteria. O projeto contempla funcionalidades completas de controle de **cardápio**, **pedidos**, **mesas** e uma rotina automática para **atualização de status de pedidos e liberação de mesas**.
 
 ## 🧱 Tecnologias utilizadas
