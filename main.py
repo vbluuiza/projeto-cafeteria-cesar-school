@@ -1,6 +1,11 @@
 from app.interface.console.console import menu_administrativo, menu_funcionario
 from app.utils.utilitarios_global import limpar_console
 
+from threading import Thread
+from app.servicos.monitoramento.atualizar_automatico import iniciar_monitoramento
+
+Thread(target=iniciar_monitoramento, daemon=True).start()
+
 def inicializar_cafeteria():
     limpar_console()
     print('\n' + '☕👥 BEM-VINDO À CAFÉ VOYAGE  👥☕'.center(50, '='))

@@ -85,6 +85,7 @@ def criar_pedido(cardapio:dict, pedidos:dict, mesas:dict):
             salvar_mesas(mesas)
         
     pedidos['pedidos'].append(pedido)
+    pedidos["total_pedidos"] += 1
     salvar_pedidos(pedidos)
     
     limpar_console()

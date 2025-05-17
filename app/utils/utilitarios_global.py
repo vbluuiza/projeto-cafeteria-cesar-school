@@ -57,13 +57,10 @@ def retornar_para_menu():
 
     inicializar_cafeteria()
     
-
-
-
 STATUS_MESA = {
     0: 'Disponível',
     1: 'Ocupada',
-    3: 'Em espera',
+    2: 'Em espera',
 }
 
 STATUS_PEDIDO = {
