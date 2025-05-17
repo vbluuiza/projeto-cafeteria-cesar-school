@@ -2,7 +2,7 @@ import json
 
 from app.repositorios.repositorio_mesas import salvar_mesas
 
-from app.utils.utilitarios_global import limpar_console, retorno_main, obter_int, STATUS_MESA
+from app.utils.utilitarios_global import limpar_console, retorno_main, obter_int, obter_texto, STATUS_MESA
 
 def cadastrar_mesa(mesas:dict):
     limpar_console()
@@ -10,7 +10,7 @@ def cadastrar_mesa(mesas:dict):
     print('\n🌟 📝 Cadastro de nova mesa 🌟')
     print('-' * 50)
     
-    quantia_de_mesas_a_adicionar = obter_int('Quantas mesas serão adicionadas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
+    quantia_de_mesas_a_adicionar = obter_int('🔢 Quantas mesas serão adicionadas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
     
     for i in range(quantia_de_mesas_a_adicionar):
         
@@ -37,7 +37,7 @@ def remover_mesa(mesas:dict):
     print('\n🌟 📝 REMOVER MESAS 🌟')
     print('-' * 50)
     
-    quantia_de_mesas_a_remover = obter_int('Quantas mesas serão removidas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
+    quantia_de_mesas_a_remover = obter_int('🔢 Quantas mesas serão removidas: ', '⚠️ A quantidade de mesas não pode ser negativa. Tente novamente\n')
     
     for i in range(quantia_de_mesas_a_remover):
         mesas['lista_de_mesas'].pop()
@@ -82,3 +82,29 @@ def listar_mesas(mesas:dict):
         print('-' * 50)
 
     retorno_main()
+    
+def editar_mesa(mesas:dict):
+    limpar_console()
+    
+    print('\n🪑📝 EDITAR MESA 🪑📝')
+    print('-' * 50)
+    
+    mesa_id = obter_int('🔢 Informe o número da mesa: ', '⚠️ O ID não pode ser negativo. Tente novamente.')
+    
+    mesa = next((mesa for mesa in mesas['lista_de_mesas'] if mesa_id == mesa['id']), None)
+    
+    if mesa:
+        status_atual = mesa['status']
+        print(f"\n📌 Status atual da mesa {mesa_id}: {mesa['status']}")
+        
+        opcoes_disponiveis = [v for v in STATUS_MESA.values() if v != status_atual]
+        print("\n📋 Opções disponíveis:", " | ".join(opcoes_disponiveis))
+        
+        status = obter_texto("✏️  Informe o novo status da mesa: ").capitalize()
+        
+        mesa['status'] = status
+        salvar_mesas(mesas)
+        print(f'✅ Status da mesa {mesa_id} atualizado para {status}!' )
+        
+    else:
+        print('❌ Mesa não encontrada.')
