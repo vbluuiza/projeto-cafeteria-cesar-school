@@ -1,6 +1,8 @@
 from app.interface.console.console import menu_administrativo, menu_funcionario
 from app.utils.utilitarios_global import limpar_console
 
+from app.banco_de_dados.conexao import conectar
+
 from threading import Thread
 from app.servicos.monitoramento.atualizar_automatico import iniciar_monitoramento
 
@@ -36,5 +38,6 @@ def inicializar_cafeteria():
         print('⚠️ Opção inválida. Tente novamente.')
     
 if __name__ == "__main__":
-    inicializar_cafeteria()
+    # inicializar_cafeteria()
+    conectar()
         
