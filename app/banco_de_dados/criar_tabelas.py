@@ -17,5 +17,14 @@ cursor.execute('''
                ''')
 
 conexao.commit()
-conexao.close()
 
+
+cursor.execute('''
+               CREATE TABLE IF NOT EXISTS mesa (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    status TEXT(50) NOT NULL
+                    
+                )
+               ''')
+conexao.commit()
+conexao.close()
