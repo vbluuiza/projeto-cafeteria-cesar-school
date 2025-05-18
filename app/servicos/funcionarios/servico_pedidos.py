@@ -1,10 +1,5 @@
 import json
 
-from app.repositorios.repositorio_pedidos import carregar_pedidos, salvar_pedidos
-from app.repositorios.repositorio_mesas import carregar_mesas, salvar_mesas
-
-from app.utils.utilitarios_cardapio import exibir_cardapio
-
 from app.utils.utilitarios_global import limpar_console, retorno_main
 
 from app.utils.utilitarios_global import obter_texto, obter_int

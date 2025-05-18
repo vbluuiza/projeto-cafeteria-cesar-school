@@ -1,7 +1,5 @@
 import json
 
-from app.repositorios.repositorio_mesas import salvar_mesas
-
 from app.utils.utilitarios_global import limpar_console, retorno_main, obter_int, obter_texto, STATUS_MESA
 
 def cadastrar_mesa(mesas:dict):

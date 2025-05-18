@@ -3,10 +3,10 @@ from app.utils.utilitarios_global import limpar_console
 
 from app.banco_de_dados.conexao import conectar
 
-from threading import Thread
-from app.servicos.monitoramento.atualizar_automatico import iniciar_monitoramento
+# from threading import Thread
+# from app.servicos.monitoramento.atualizar_automatico import iniciar_monitoramento
 
-Thread(target=iniciar_monitoramento, daemon=True).start()
+# Thread(target=iniciar_monitoramento, daemon=True).start()
 
 def inicializar_cafeteria():
     limpar_console()
@@ -37,7 +37,6 @@ def inicializar_cafeteria():
     else:
         print('⚠️ Opção inválida. Tente novamente.')
     
-# if __name__ == "__main__":
-    # inicializar_cafeteria()
-    conectar()
+if __name__ == "__main__":
+    inicializar_cafeteria()
         

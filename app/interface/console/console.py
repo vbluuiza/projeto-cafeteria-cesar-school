@@ -5,18 +5,8 @@ from app.servicos.admin.servico_mesas import cadastrar_mesa, listar_mesas, remov
 from app.servicos.admin.servico_pedidos import listar_pedidos
 from app.servicos.funcionarios.servico_pedidos import criar_pedido, editar_pedido, remover_pedido
 
-from app.utils.utilitarios_cardapio import exibir_cardapio
-
-from app.repositorios.repositorio_cardapio import carregar_cardapio
-from app.repositorios.repositorio_mesas import carregar_mesas
-from app.repositorios.repositorio_pedidos import carregar_pedidos
-
 
 def menu_funcionario():
-
-    pedidos = carregar_pedidos()
-    cardapio = carregar_cardapio()
-    mesas = carregar_mesas()
 
     limpar_console()
     print('\n' + '🔧⚙️ MENU FUNCIONÁRIO ⚙️🔧'.center(50, '='))
@@ -39,14 +29,13 @@ def menu_funcionario():
             print('❌ Opção inválida! Digite um número.')
             
     if opcao == 1:
-        if cardapio:
-            criar_pedido(cardapio,pedidos,mesas)
+        criar_pedido()
 
     elif opcao == 2:
-        editar_pedido(cardapio,pedidos,mesas)
+        editar_pedido()
     
     elif opcao == 3:
-        remover_pedido(pedidos)
+        remover_pedido()
 
     elif opcao == 4:
         retornar_para_menu()
@@ -99,7 +88,6 @@ def menu_administrativo_mesa():
     print('0️⃣  Sair')
     print('=' * 50)
     
-    mesas = carregar_mesas()
 
     while True:
         try:
@@ -112,23 +100,19 @@ def menu_administrativo_mesa():
             print('❌ Opção inválida! Digite um número.')
             
     if opcao == 1:
-        if mesas:
-            cadastrar_mesa(mesas)
+        cadastrar_mesa()
 
     elif opcao == 2:
-        if mesas:
-            remover_mesa(mesas)
+        remover_mesa()
 
     elif opcao == 3:
-        if mesas:
-            buscar_mesa_id(mesas)
+        buscar_mesa_id()
             
     elif opcao == 4:
-        if mesas:
-            listar_mesas(mesas)
+        listar_mesas()
     
     elif opcao == 5:
-        editar_mesa(mesas)
+        editar_mesa()
     
     elif opcao == 6:
         menu_administrativo()
@@ -150,7 +134,6 @@ def menu_administrativo_cardapio():
     print('0️⃣  Sair')
     print('=' * 50)
 
-    cardapio = carregar_cardapio()
 
     while True:
         try:
@@ -163,30 +146,25 @@ def menu_administrativo_cardapio():
             print('❌ Opção inválida! Digite um número.')
 
     if opcao == 1:
-        if cardapio:
-            cadastrar_item(cardapio)
+        cadastrar_item()
     elif opcao == 2:
         if cardapio:
-            editar_item_cardapio(cardapio)
+            editar_item_cardapio()
     elif opcao == 3:
         if cardapio:
-            remover_item_cardapio(cardapio)       
+            remover_item_cardapio()       
     elif opcao == 4:
         if cardapio:
             exibir_cardapio()
     elif opcao == 5:
         if cardapio:
-            buscar_item_cardapio(cardapio)
+            buscar_item_cardapio()
     elif opcao == 6:
         menu_administrativo()
     elif opcao == 0:
         print('\n👋 Até logo! Obrigado por visitar o Café Voyage.\n') 
 
 def menu_administrativo_pedidos():
-
-    pedidos = carregar_pedidos()
-    cardapio = carregar_cardapio()
-    mesas = carregar_mesas()
 
     limpar_console()
     print('\n' + '🔧⚙️ MENU ADMINISTRATIVO ⚙️🔧'.center(50, '='))
@@ -207,6 +185,6 @@ def menu_administrativo_pedidos():
             print('❌ Opção inválida! Digite um número.')
 
     if opcao == 1:
-        listar_pedidos(cardapio,pedidos,mesas)
+        listar_pedidos()
     elif opcao == 2:
         menu_administrativo()
