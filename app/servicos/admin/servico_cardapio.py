@@ -36,21 +36,27 @@ def remover_item_cardapio():
     print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
     print('-' * 50)
     
-    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
     
-    item_remover = obter_texto('\n✏️  Informe o nome exato do item que deseja remover: ')
-    item_encontrado = False
+    item_remover = obter_texto('\n✏️  Informe o ID exato do item que deseja remover: ')
 
-    for item in cardapio[categoria_geral][categoria_especifica]:
-        if item['nome'] == item_remover:
-            item_encontrado = True
-            cardapio[categoria_geral][categoria_especifica].remove(item)
-            print(f'\n✅ Item "{item_remover}" removido com sucesso!')
-            salvar_cardapio(cardapio)
-            break  
+    cursor.execute('''
+                    SELECT id FROM cardapio 
+                    WHERE id = ?    
+                ''', (item_remover,))    
+    resultado = cursor.fetchone()
+    
+    if resultado:
+        confirmar = obter_texto('❗ Tem certeza que deseja remover este item? (s/n): ').lower()
+        if confirmar == 's':
+            cursor.execute('DELETE FROM cardapio WHERE id = ?', (item_remover,))
+            conexao.commit()
+            print("\n✅ Item removido com sucesso!")
+        else:
+            print("\n🔙 Remoção cancelada.")
+    else:
+        print("\n❌ ID não encontrado no cardápio.")
 
-    if not item_encontrado:
-        print('\n❌ Item não encontrado. Verifique o nome e tente novamente.')
+    conexao.close()
 
 def editar_item_cardapio(cardapio:dict):
     limpar_console()

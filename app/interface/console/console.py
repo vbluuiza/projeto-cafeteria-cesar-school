@@ -148,17 +148,13 @@ def menu_administrativo_cardapio():
     if opcao == 1:
         cadastrar_item()
     elif opcao == 2:
-        if cardapio:
-            editar_item_cardapio()
+        editar_item_cardapio()
     elif opcao == 3:
-        if cardapio:
-            remover_item_cardapio()       
+        remover_item_cardapio()       
     elif opcao == 4:
-        if cardapio:
-            exibir_cardapio()
+        exibir_cardapio()
     elif opcao == 5:
-        if cardapio:
-            buscar_item_cardapio()
+        buscar_item_cardapio()
     elif opcao == 6:
         menu_administrativo()
     elif opcao == 0:

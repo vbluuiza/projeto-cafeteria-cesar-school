@@ -2,9 +2,11 @@
 __pycache__/
 *.py[cod]
 *.pyo
+*.pyc
 
 # Banco de dados local (SQLite)
 app/banco_de_dados/cafeteria.db
+
 
 # Ambiente virtual
 venv/
