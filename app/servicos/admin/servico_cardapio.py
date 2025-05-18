@@ -1,44 +1,36 @@
 import json
-
-from app.repositorios.repositorio_cardapio import carregar_cardapio, salvar_cardapio
+import sqlite3
+from app.banco_de_dados.conexao import conectar
 
 from app.utils.utilitarios_global import limpar_console
 from app.utils.utilitarios_global import obter_float, obter_texto
 
-from app.utils.utilitarios_cardapio import gerar_proximo_id, obter_categoria_e_subcategoria_valida
+conexao = conectar()
+cursor = conexao.cursor()
 
-def cadastrar_item(cardapio:dict):
+def cadastrar_item():
     limpar_console()
     
     print('\n🌟 📝 CADASTRO DE NOVO ITEM NO CARDÁPIO 🌟')
     print('-' * 50)
 
-    categoria_geral, categoria_especifica = obter_categoria_e_subcategoria_valida()
-
-    _id = gerar_proximo_id(cardapio)
     nome = obter_texto('📛 Nome do item: ')
     descricao = obter_texto('🖋️  Descrição do item: ')
-    ingredientes_str = obter_texto('🥄 Ingredientes (separados por vírgula): ')
+    ingredientes = obter_texto('🥄 Ingredientes (separados por vírgula): ')
     preco = obter_float('💲 Preço (ex: 12.50): ')
-    ingredientes = [ingrediente.strip() for ingrediente in ingredientes_str.split(',')]
-    categoria_item = obter_texto('🖋️  Categoria do item: ')
+    subcategoria = obter_texto('🖋️  Subcategoria do item: ')
+    categoria = obter_texto('🖋️  Categoria do item: ')
     
-    novo_item = {
-        'id': _id,
-        'nome': nome,
-        'descricao': descricao,
-        'ingredientes': ingredientes,
-        'preco': preco,
-        'categoria': categoria_item
-    }
+    cursor.execute('''
+                    INSERT INTO cardapio (nome, descricao, ingredientes, preco, subcategoria, categoria)
+                    VALUES(?, ?, ?, ?, ?, ?)
+                   ''', (nome, descricao, ingredientes, preco, subcategoria, categoria))
     
+    conexao.commit()
+    print('ITEM ADICIONADO NO CATEGORIA')
+    conexao.close()
     
-    cardapio[categoria_geral][categoria_especifica].append(novo_item)
-    print(f'\n✅ "{nome.title()}" foi adicionado à categoria "{categoria_especifica}" dentro de "{categoria_geral}" com sucesso!')
-    
-    salvar_cardapio(cardapio)
-        
-def remover_item_cardapio(cardapio:dict):
+def remover_item_cardapio():
     limpar_console()
     
     print('\n' + '🚮🗑️ REMOVER ITEM CARDÁPIO  🗑️🚮'.center(46, '─'))
