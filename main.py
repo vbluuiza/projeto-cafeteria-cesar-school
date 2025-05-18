@@ -37,7 +37,7 @@ def inicializar_cafeteria():
     else:
         print('⚠️ Opção inválida. Tente novamente.')
     
-if __name__ == "__main__":
+# if __name__ == "__main__":
     # inicializar_cafeteria()
     conectar()
         
