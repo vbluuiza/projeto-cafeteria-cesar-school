@@ -1,4 +1,29 @@
-__pycache__/
+Arquivos e pastas Python,
+pycache/
+*.py[cod]
+*.pyo
 *.pyc
-.git/
+
+Banco de dados local (SQLite),
+app/banco_de_dados/cafeteria.db
+
+
+Ambiente virtual,
 venv/
+.env
+*.env
+
+Dados temporários ou persistência antiga,
+app/banco_de_dados/dados_json/
+*.json
+
+Arquivos de log e dumps,
+*.log
+*.sqlite3
+
+VSCode,
+.vscode/
+
+Arquivos do sistema (Windows/macOS),
+.DS_Store
+Thumbs.db
