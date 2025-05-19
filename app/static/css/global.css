@@ -1,0 +1,21 @@
+.nav-scroller {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  display: flex;
+}
+
+.nav-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-nav {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.custom-nav .nav-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
