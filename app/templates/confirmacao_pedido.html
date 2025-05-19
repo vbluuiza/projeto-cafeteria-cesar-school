@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação do Pedido</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/confirmacao_pedido.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Confirmação do Pedido</h1>
+    </header>
+
+    <main>
+        <section>
+            <label for="mesa">Mesa para o pedido:</label>
+            <select id="mesa">
+                <option value="">Escolha 1 mesa</option>
+                <!-- parte do request do banco de dados. essa parte de mesas já cadastradas. vai ser um dropdown -->
+            </select>
+        </section>
+
+        <section id="itens-pedido">
+            <h2>Itens do pedido</h2>
+            <ul id="lista-itens">
+                <!-- Inserir a funcionalidade de listar os itens adicionados do cardápio aqui. -->
+            </ul>
+        </section>
+
+        <section id="resumo-valores">
+            <p>Subtotal: <span id="subtotal">R$ 0,00</span></p>
+            <p><strong>Total: <span id="total">R$ 0,00</span></strong></p>
+        </section>
+
+        <button id="confirmar">Confirmar Pedido</button>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/confirmacao_pedido.js') }}"></script>
+</body>
+</html>
