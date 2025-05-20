@@ -1,15 +1,14 @@
-const optionCards = document.querySelectorAll('.opicao-card');
-optionCards.forEach(card => {
-    card.addEventListener('click', () => {
-        optionCards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-    });
-});
+const radioGroup = [
+  document.getElementById("radioItem1"),
+  document.getElementById("radioItem2"),
+  document.getElementById("radioItem3"),
+  document.getElementById("radioItem4"),
+  document.getElementById("radioItem5")
+].filter(Boolean); // Filtra para remover possíveis elementos null/undefined
 
-const textarea = document.querySelector('.notes-textarea');
-const counter = document.querySelector('.character-count');
-
-textarea.addEventListener('input', () => {
-    const count = textarea.value.length;
-    counter.textContent = `${count}/140`;
+radioGroup.forEach(item => {
+  item.addEventListener('click', () => {
+    radioGroup.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
 });

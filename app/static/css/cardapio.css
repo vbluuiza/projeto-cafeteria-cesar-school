@@ -3,19 +3,23 @@
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  display: flex;
 }
 
 .nav-scroller::-webkit-scrollbar {
   display: none;
 }
 
-.custom-nav {
-  display: flex;
-  flex-wrap: nowrap;
-}
-
-.custom-nav .nav-item {
+.custom-nav li {
   scroll-snap-align: start;
   flex: 0 0 auto;
+}
+
+li .nav-link {
+  text-decoration: none;
+  color: gray;
+}
+
+.nav-link.active {
+  color: blue;
+  border-bottom: 2px solid blue;
 }
