@@ -23,3 +23,38 @@ li .nav-link {
   color: blue;
   border-bottom: 2px solid blue;
 }
+
+.custom-card{
+  display: grid;
+  align-items: center;
+  grid-template-areas: 
+  "card-img card-title"
+  "card-img card-text"
+  "card-img card-price";
+  column-gap: 16px;
+  padding: 8px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-img{
+  grid-area: card-img;
+  object-fit: cover;
+}
+
+.card-title{
+  grid-area: card-title;
+  font-size: 20px;
+}
+
+.card-text{
+  display: flex;
+  grid-area: card-text;
+  font-size: 14px;
+  color: gray;
+}
+
+.card-price{
+  grid-area: card-price;
+  font-size: 16px;
+  color: green;
+}
