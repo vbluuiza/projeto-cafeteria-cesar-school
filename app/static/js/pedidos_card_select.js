@@ -1,6 +1,6 @@
 // Inicio do código para seleção dos cards dos pedidos | By Lucca 
 document.addEventListener('DOMContentLoaded', function() {
-    const optionCards = document.querySelectorAll('.opicao-card');
+    const optionCards = document.querySelectorAll('.opcao-card');
     optionCards.forEach(card => {
         card.addEventListener('click', () => {
             optionCards.forEach(c => c.classList.remove('selected'));
