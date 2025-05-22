@@ -1,3 +1,4 @@
+
 .nav-scroller {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -56,5 +57,5 @@ li .nav-link {
 }
 
 .section-card-container {
-  margin-top: 120px;
+  margin: 120px 0;
 }

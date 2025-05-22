@@ -1,0 +1,33 @@
+.produto-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.opcao-card {
+    transition: all 0.3s;
+}
+
+.opcao-card:hover {
+    border-color: #0d6efd;
+    background-color: #f8f9fa;
+}
+
+.opcao-card.selected {
+    border-color: #0d6efd;
+    background-color: #e7f1ff;
+}
+
+.notes-textarea {
+    width: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1rem;
+    resize: none;
+    height: 100px;
+}
+
+.observacao_section{
+    padding-bottom: 120px;
+}
+

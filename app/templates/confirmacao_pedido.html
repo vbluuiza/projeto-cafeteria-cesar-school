@@ -11,57 +11,69 @@
 </head>
 
 <body>
-    <nav class="navbar px-3 py-2">
-        <a class="text-dark" href="javascript:history.back()"><i class="bi bi-arrow-left fs-4"></i></a>
-        <span class="mx-auto fw-semibold">Item</span>
-        <span class="rounded-circle bg-secondary text-white d-flex justify-content-center align-items-center"
-            style="width: 30px; height: 30px;">M</span>
+    <nav class="navbar bg-body-tertiary py-0">
+        <div class="container-fluid px-3 border-bottom d-flex align-items-center py-2">
+            <div class="d-flex">
+                <a class="navbar-toggler border-0 px-0" type="button" href="index.html">
+                    <span class="bi bi-arrow-left"></span>
+                </a>
+                <h4 class="mb-0 ps-4">pedido 01</h4>
+            </div>
+            <img src="../static/img/M_img.png" alt="">
+        </div>
     </nav>
 
-    <div class="container py-3">
-        <section>
-            <p class="mb-0 fw-medium">Mesa para o pedido:</p>
-            <small class="text-muted">Escolha 1 mesa</small>
+    <div class="px-3">
+        <div class="d-flex justify-content-between">
+            <div>
+                <p class="mb-0 fw-medium">Mesa para o pedido:</p>
+                <small class="text-muted">Escolha 1 mesa</small>
+            </div>
             <select class="form-select mt-1 w-auto" style="font-weight: 500;">
                 <option selected>Mesa 01</option>
                 <option>Mesa 02</option>
             </select>
-        </section>
+        </div>
 
         <hr>
 
-        <section>
+        <div>
             <h5 class="fw-semibold">Itens do pedido</h5>
-
-            <div class="d-flex justify-content-between align-items-start mt-3">
-                <div>
-                    <p class="mb-1 fw-semibold">Affogato</p>
-                    <p class="mb-1 text-muted small">Café expresso quente, Sorvete de Baunilha ou Doce de Leite</p>
-                    <p class="text-success fw-semibold">R$ 15,99</p>
+            <div id="itens-container">
+                <div class="d-flex justify-content-between mt-3 align-items-center">
+                    <div class="w-75">
+                        <p class="mb-1 fw-semibold">Affogato</p>
+                        <p class="mb-1 text-muted small">Café expresso quente, Sorvete de Baunilha ou Doce de Leite</p>
+                        <p class="text-success fw-semibold">R$ 15,99</p>
+                    </div>
+                    <i class="bi bi-trash text-danger fs-5"></i>
                 </div>
-                <i class="bi bi-trash text-danger fs-5"></i>
             </div>
-        </section>
+            <p class="text-center text-danger fw-medium mt-4">Adicionar mais itens</p>
+        </div>
 
-        <p class="text-center text-danger fw-medium mt-4">Adicionar mais itens</p>
-        <section class="mt-auto">
+
+        <div class="mt-5">
             <h5 class="fw-semibold">Resumo de valores</h5>
             <div class="d-flex justify-content-between mt-4">
-            <span class="text-muted">Subtotal:</span>
-            <span class="text-muted">R$ 18.99</span>
+                <span class="text-muted">Subtotal:</span>
+                <span class="text-muted">R$ 18.99</span>
             </div>
             <div class="d-flex justify-content-between">
-            <span class="fw-medium">Total:</span>
-            <span class="fw-medium">R$ 20.99</span>
+                <span class="fw-medium">Total:</span>
+                <span class="fw-medium">R$ 20.99</span>
             </div>
-        </section>
-        
         </div>
 
-        <div class="footer-total d-flex justify-content-between align-items-center px-3 py-2 shadow footer-teste" style="position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; z-index: 1000;">
-        <div class="fw-semibold">R$ 49,90 / 1 itens</div>
-        <button class="btn btn-primary fw-semibold">Confirmar Pedido</button>
+    </div>
+
+    <div class="d-flex fixed-bottom pt-3 pb-2 px-3 ali">
+        <div class="fw-semibold w-50">
+            <p class="mb-0">Total</p>
+            <p class="mb-0">R$ 49,90 / 1 item</p>
         </div>
+        <button class="btn btn-primary fw-semibold w-50">Confirmar Pedido</button>
+    </div>
 
 </body>
 
