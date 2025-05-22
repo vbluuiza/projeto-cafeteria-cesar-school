@@ -1,0 +1,27 @@
+
+:root {
+
+    --perfil-color: var(--blue-200);
+    --theme-color: var(--blue-500);
+    --alert-color: var(--red-500);
+    --confirm-color: var(--green-500);
+    --price-color: var(--green-700);
+    --text-color-2: #68717A;
+
+    /*blue-scale*/
+    --blue-200:#C0ABFC;
+    --blue-300:#A485FA;
+    --blue-400:#926DF9;
+    --blue-500:#7749F8;
+    --blue-600:#6C42E2;
+    
+    /*red-scale*/
+    --red-500:#F45E5E;
+
+    /*green-scale*/
+    --green-500:#50EB9E;
+    --green-600:#49D690;
+    --green-700:#39A770;
+}
+
+

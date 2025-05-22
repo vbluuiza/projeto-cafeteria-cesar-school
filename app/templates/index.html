@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="../static/css/vars.css">
     <link rel="stylesheet" href="../static/css/cardapio.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
 </head>
 
 <body>
-    <nav class="navbar bg-body-tertiary py-0">
+    <nav class="navbar bg-body-tertiary py-0 fixed-top">
         <div class="container-fluid px-3 border-bottom d-flex align-items-center py-2">
             <button class="navbar-toggler border-0 px-0" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -34,150 +35,175 @@
                     </ul>
                 </div>
             </div>
-            <img src="../static/img/M_img.png" alt="">
+            <img src="../static/img/M_img.png" alt="">        
         </div>
         <div class="nav-scroller d-flex mt-2">
             <ul class="nav flex-nowrap custom-nav">
                 <li>
-                    <a class="nav-link py-1 active" id="radioItem1" href="#">CAFÉS ESPECIAIS</a>
+                    <a class="nav-link py-1 active" id="radioItem1" href="#cafes_especiais">CAFÉS ESPECIAIS</a>
                 </li>
                 <li>
-                    <a class="nav-link py-1" id="radioItem2" href="#">CAFÉS</a>
+                    <a class="nav-link py-1" id="radioItem2" href="#cafes">CAFÉS</a>
                 </li>
                 <li>
-                    <a class="nav-link py-1" id="radioItem3" href="#">OUTRAS BEBIDAS</a>
+                    <a class="nav-link py-1" id="radioItem3" href="#outras_bebidas">OUTRAS BEBIDAS</a>
                 </li>
                 <li>
-                    <a class="nav-link py-1" id="radioItem4" href="#">SANDUICHES</a>
+                    <a class="nav-link py-1" id="radioItem4" href="#sanduiches">SANDUICHES</a>
                 </li>
                 <li>
-                    <a class="nav-link py-1" id="radioItem5" href="#">SOBREMESAS</a>
+                    <a class="nav-link py-1" id="radioItem5" href="#sobremesas">SOBREMESAS</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div>
+    <div class="section-card-container">
         <div class="px-3 mt-3">
             <h6 id="cafes_especiais" class="mb-3">Cafés especiais</h6>
             <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/afogato.jpg" alt="">
-                    <h5 class="card-title mb-2">Affogato</h5>
-                    <p class="card-text mb-2">Café expresso quente, Sorvete de Baunilha ou Doce de Leite</p>
-                    <p class="card-price mb-0">R$18,99</p>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/affogato.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Affogato</h5>
+                        <p class="card-text mb-2">Café expresso quente, Sorvete de Baunilha ou Doce de Leite</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
                 </div>
 
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/mocha.png" alt="">
-                    <h5 class="card-title mb-2">Mocha</h5>
-                    <p class="card-text mb-2">Café expresso, Leite e Chocolate em pó</p>
-                    <p class="card-price mb-0">R$18,99</p>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/mocha.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Mocha</h5>
+                        <p class="card-text mb-2">Café expresso, Leite e Chocolate em pó</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
                 </div>
 
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/cafe-gelado.png" alt="">
-                    <h5 class="card-title mb-2">Café Gelado</h5>
-                    <p class="card-text mb-2">Café expresso, Gelo, Chantilly</p>
-                    <p class="card-price mb-0">R$18,99</p>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/cafe_gelado.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Café Gelado</h5>
+                        <p class="card-text mb-2">Café expresso, Gelo, Chantilly</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
                 </div>
-
-            <h6 id="cafes_especiais" class="mb-3 mt-5">Cafés</h6>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/espresso.png" alt="">
-                    <h5 class="card-title mb-2">Expresso</h5>
-                    <p class="card-text mb-2">Café especial moído fino</p>
-                    <p class="card-price mb-0">R$ 15,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/cappuccino.png" alt="">
-                    <h5 class="card-title mb-2">Cappuccino</h5>
-                    <p class="card-text mb-2">Café expresso, Leite, Espuma de leite cremosa</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/cafe-com-leite.png" alt="">
-                    <h5 class="card-title mb-2">Café com Leite</h5>
-                    <p class="card-text mb-2">Café expresso, Leite</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <h6 id="cafes_especiais" class="mb-3 mt-5">Outras Bebidas</h6>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/agua-natural.png" alt="">
-                    <h5 class="card-title mb-2">Água Natural</h5>
-                    <p class="card-text mb-2"></p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/suco-de-laranja.png" alt="">
-                    <h5 class="card-title mb-2">Suco de Laranja</h5>
-                    <p class="card-text mb-2"> Colocar a descricao </p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/chocolate-quente.png" alt="">
-                    <h5 class="card-title mb-2">Chocolate Quente</h5>
-                    <p class="card-text mb-2">  Colocar a descricao  </p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-                
-                <h6 id="cafes_especiais" class="mb-3 mt-5">Sanduíches</h6>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/suco-de-laranja.png" alt="">
-                    <h5 class="card-title mb-2">Sanduiche de frango</h5>
-                    <p class="card-text mb-2">Pão de forma, frango e queijo</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/chocolate-quente.png" alt="">
-                    <h5 class="card-title mb-2">Misto Quente</h5>
-                    <p class="card-text mb-2">Pão de forma, Presunto, Queijo Muçarela</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <h6 id="cafes_especiais" class="mb-3 mt-5">Sobremesas</h6>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/petit-gateu.png" alt="">
-                    <h5 class="card-title mb-2">Petit Gâteau</h5>
-                    <p class="card-text mb-2">Petit Gateau de chocolate e Sorvete de baunilha</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
-                <div>
-                <div class="custom-card rounded-2 bg-light mb-2">
-                    <img class="card-img h-100 rounded-2" src="../static/img/br" alt="">
-                    <h5 class="card-title mb-2">Misto Quente</h5>
-                    <p class="card-text mb-2">Pão de forma, Presunto, Queijo Muçarela</p>
-                    <p class="card-price mb-0">R$18,99</p>
-                </div>
-
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-            crossorigin="anonymous"></script>
-        <script src="../static/js/scripts.js"></script>
+            <h6 id="cafes" class="mb-3 mt-5">Cafés</h6>
+
+            <div>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/expresso.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Expresso</h5>
+                        <p class="card-text mb-2">Café especial moído fino</p>
+                        <p class="card-price mb-0">R$ 15,99</p>
+                    </div>
+                </div>
+
+
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/capuccino.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Cappuccino</h5>
+                        <p class="card-text mb-2">Café expresso, Leite, Espuma de leite cremosa</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+
+
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/cafe_com_leite.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Café com Leite</h5>
+                        <p class="card-text mb-2">Café expresso, Leite</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+            </div>
+            <h6 id="outras_bebidas" class="mb-3 mt-5">Outras Bebidas</h6>
+
+            <div>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/agua_mineral.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Água Natural</h5>
+                        <p class="card-text mb-2"></p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+
+
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/suco_de_laranja.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Suco de Laranja</h5>
+                        <p class="card-text mb-2"> Colocar a descricao </p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+
+
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/chocolate_quente.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Chocolate Quente</h5>
+                        <p class="card-text mb-2"> Colocar a descricao </p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+            </div>
+            <h6 id="sanduiches" class="mb-3 mt-5">Sanduíches</h6>
+
+            <div>
+                <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                    <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/sanduiche_de_frango.jpg" alt="">
+                    <div class="card-content">
+                        <h5 class="card-title mb-2">Sanduiche de frango</h5>
+                        <p class="card-text mb-2">Pão de forma, frango e queijo</p>
+                        <p class="card-price mb-0">R$18,99</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                        <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/misto_quente.jpg" alt="">
+                        <div class="card-content">
+                            <h5 class="card-title mb-2">Misto Quente</h5>
+                            <p class="card-text mb-2">Pão de forma, Presunto, Queijo Muçarela</p>
+                            <p class="card-price mb-0">R$18,99</p>
+                        </div>
+                    </div>
+
+                    <h6 id="sobremesas" class="mb-3 mt-5">Sobremesas</h6>
+
+                    <div>
+                        <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                            <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/petit_gateau.jpg" alt="">
+                            <div class="card-content">
+                                <h5 class="card-title mb-2">Petit Gâteau</h5>
+                                <p class="card-text mb-2">Petit Gateau de chocolate e Sorvete de
+                                    baunilha</p>
+                                <p class="card-price mb-0">R$18,99</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="custom-card rounded-2 bg-light mb-2" onclick="redirectToDetails(this)">
+                                <img class="card-img h-100 rounded-2" src="../static/img/itens_cardapio/brownie.jpg" alt="">
+                                <div class="card-content">
+                                    <h5 class="card-title mb-2">Misto Quente</h5>
+                                    <p class="card-text mb-2">Pão de forma, Presunto, Queijo
+                                        Muçarela</p>
+                                    <p class="card-price mb-0">R$18,99</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+                        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+                        crossorigin="anonymous"></script>
+                    <script src="../static/js/cardapio.js"></script>
 </body>
 
 </html>

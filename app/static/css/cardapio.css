@@ -16,47 +16,45 @@
 
 li .nav-link {
   text-decoration: none;
-  color: gray;
+  color: var(--text-color-2);
 }
 
 .nav-link.active {
-  color: blue;
-  border-bottom: 2px solid blue;
+  color: var(--theme-color);
+  border-bottom: 2px solid var(--theme-color);
 }
 
 .custom-card{
   display: grid;
   align-items: center;
   grid-template-areas: 
-  "card-img card-title"
-  "card-img card-text"
-  "card-img card-price";
-  column-gap: 16px;
+  "card-img card-content";
+  column-gap: 12px;
   padding: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  grid-template-columns: 125px 188px;
+  grid-template-rows: 100px;
 }
-
-
 
 .card-img{
   grid-area: card-img;
-  object-fit: cover;
-}
-
-.card-title{
-  grid-area: card-title;
-  font-size: 20px;
+  width: 125px;
+  height: 100px;
 }
 
 .card-text{
-  display: flex;
-  grid-area: card-text;
   font-size: 14px;
-  color: gray;
+  color: var(--text-color-2);                
+  height: 40px;          
+  overflow: hidden;            
+  text-overflow: ellipsis;
 }
 
 .card-price{
-  grid-area: card-price;
   font-size: 16px;
-  color: green;
+  color: var(--price-color);
+}
+
+.section-card-container {
+  margin-top: 120px;
 }
